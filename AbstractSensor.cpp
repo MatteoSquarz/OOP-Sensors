@@ -1,10 +1,11 @@
 #include "AbstractSensor.h"
-#include <SensorObserverInterface.h>
+#include "SensorObserverInterface.h"
 
 
-std::string AbstractSensor::getName() const{ return name;}
-std::string AbstractSensor::getDescription() const{ return description;}
-std::string AbstractSensor::getID() const{ return ID;}
+const std::string& AbstractSensor::getName() const{ return name;}
+const std::string& AbstractSensor::getDescription() const{ return description;}
+const std::string& AbstractSensor::getID() const{ return ID;}
+const std::vector<int>& AbstractSensor::getHistory() const{ return history;}
 bool AbstractSensor::isSmart() const{ return smartApp;}
 bool AbstractSensor::isIndoor() const{ return indoor;}
 
@@ -18,3 +19,11 @@ void AbstractSensor::registerObserver(SensorObserverInterface* observer) {
     observers.push_back(observer);
 }
 
+
+void AbstractSensor::generateRandomHistory(int minValue, int maxValue){
+	srand((unsigned) time(NULL));
+	for(int i=1; i<=24; i++){
+		int random = minValue + (rand() % (minValue+maxValue+1));
+        history.push_back(random);
+	}
+}
