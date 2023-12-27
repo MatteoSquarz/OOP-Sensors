@@ -8,7 +8,7 @@ class AbstractSensor;
 class SensorObserverInterface {
   public:
     virtual ~SensorObserverInterface() = default;
-    virtual void notify(AbstractSensor& character) = 0;
+    virtual void notify(AbstractSensor& sensor) = 0;
 };
 
 
