@@ -1,6 +1,10 @@
 #include "AbstractSensor.h"
 #include "SensorObserverInterface.h"
 
+namespace Sensor{
+
+AbstractSensor::AbstractSensor(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor) : 
+	name(name), description(description), ID(id), smartApp(isSmart), indoor(isIndoor) {}
 
 const std::string& AbstractSensor::getName() const{ return name;}
 const std::string& AbstractSensor::getDescription() const{ return description;}
@@ -26,4 +30,6 @@ void AbstractSensor::generateRandomHistory(int minValue, int maxValue){
 		int random = minValue + (rand() % (minValue+maxValue+1));
         history.push_back(random);
 	}
+}
+
 }

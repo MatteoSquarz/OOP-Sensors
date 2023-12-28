@@ -1,7 +1,8 @@
 #ifndef SENSOR_VISITOR_INTERFACE_H
 #define SENSOR_VISITOR_INTERFACE_H
 
-
+namespace Sensor{
+  
 class MotionSensor;
 class TemperatureSensor;
 class LuminositySensor;
@@ -14,6 +15,6 @@ class SensorVisitorInterface {
     virtual void visitLuminositySensor(LuminositySensor& luminosity) = 0;
 };
 
-
+}
 
 #endif

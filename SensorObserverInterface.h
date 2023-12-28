@@ -1,7 +1,7 @@
 #ifndef SENSOR_OBSERVER_INTERFACE_H
 #define SENSOR_OBSERVER_INTERFACE_H
 
-
+namespace Sensor{
 
 class AbstractSensor;
 
@@ -12,5 +12,5 @@ class SensorObserverInterface {
 };
 
 
-
+}
 #endif

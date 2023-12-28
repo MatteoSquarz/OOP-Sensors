@@ -5,6 +5,9 @@
 #include "SensorVisitorInterface.h"
 #include "SensorObserverInterface.h"
 
+
+namespace Sensor{
+
 class AbstractSensor{
 private:
     std::string name;
@@ -15,6 +18,8 @@ private:
     std::vector<int> history;
     std::vector<SensorObserverInterface*> observers;
 public:
+    AbstractSensor(const std::string, const std::string, const std::string, const bool, const bool);
+
     const std::string& getName() const;
     const std::string& getDescription() const;
     const std::string& getID() const;
@@ -33,7 +38,7 @@ public:
     void registerObserver(SensorObserverInterface* observer);
     void generateRandomHistory(int, int);
 };
-
+}
 
 
 #endif
