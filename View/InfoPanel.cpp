@@ -1,4 +1,4 @@
-#include "AbstractSensor.h"
+#include "../AbstractSensor.h"
 #include "InfoPanel.h"
 #include <QHBoxLayout>
 #include <QPushButton>

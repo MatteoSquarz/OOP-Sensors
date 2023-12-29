@@ -24,12 +24,16 @@ void AbstractSensor::registerObserver(SensorObserverInterface* observer) {
 }
 
 
-void AbstractSensor::generateRandomHistory(int minValue, int maxValue){
+std::vector<int> AbstractSensor::generateRandomHistory(int minValue, int maxValue){
 	srand((unsigned) time(NULL));
 	for(int i=1; i<=24; i++){
-		int random = minValue + (rand() % (minValue+maxValue+1));
+		int random = minValue + (rand() % ((maxValue-minValue)+1));
         history.push_back(random);
 	}
+	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
+        (*observer)->notify(*this);
+    }
+	return history;
 }
 
 }
