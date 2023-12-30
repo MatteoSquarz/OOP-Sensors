@@ -19,7 +19,7 @@ private:
     std::vector<SensorObserverInterface*> observers;
 public:
     AbstractSensor(const std::string, const std::string, const std::string, const bool, const bool);
-
+    AbstractSensor();
     const std::string& getName() const;
     const std::string& getDescription() const;
     const std::string& getID() const;
@@ -37,6 +37,7 @@ public:
     virtual void accept(SensorVisitorInterface& visitor) = 0;
     void registerObserver(SensorObserverInterface* observer);
     void generateRandomHistory(int, int);
+    bool operator== (const AbstractSensor& s);
 };
 }
 

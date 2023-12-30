@@ -1,5 +1,5 @@
 #include "MainWindow.h"
-#include "SensorPanel.h"
+#include "ApplicationPanel.h"
 #include <QMenuBar>
 #include <QGridLayout>
 #include <QMenu>
@@ -11,13 +11,13 @@
 namespace Sensor{
 namespace View{
 
-MainWindow::MainWindow(Sensor::AbstractSensor& sensor) {
+MainWindow::MainWindow(std::vector<AbstractSensor*>& sensorList) : sensorList(sensorList){
 
     auto* openAction = this->menuBar()->addAction("OPEN");
     connect(openAction, &QAction::triggered, [this](bool checked){open();});
     auto* saveAction = this->menuBar()->addAction("SAVE");
     auto* addAction = this->menuBar()->addAction("ADD SENSOR");
-    SensorPanel* sensore = new SensorPanel(sensor);
+    ApplicationPanel* sensore = new ApplicationPanel(sensorList);
     setCentralWidget(sensore);
     
 

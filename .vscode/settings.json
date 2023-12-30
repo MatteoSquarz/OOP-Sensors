@@ -60,6 +60,8 @@
         "variant": "cpp",
         "codecvt": "cpp",
         "iomanip": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "qvboxlayout": "cpp",
+        "qhboxlayout": "cpp"
     }
 }
