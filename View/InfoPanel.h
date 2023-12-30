@@ -13,6 +13,9 @@ private:
     
 public:
     InfoPanel(Sensor::AbstractSensor& sensor, QWidget* parent =0);
+
+signals:
+    void modify();
 };   
 
 

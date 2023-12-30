@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
+#include <iostream>
 namespace Sensor{
 namespace View{
 

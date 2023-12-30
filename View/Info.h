@@ -18,7 +18,8 @@ private:
     QLabel* id_label;
     QLabel* is_smart_label;
     QLabel* is_indoor_label;
-
+    QLabel* campi_dati_1;
+    QLabel* campi_dati_2;
 public:
     Info(AbstractSensor& sensor, QWidget* parent = 0);
     void show();

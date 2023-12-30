@@ -36,7 +36,7 @@ public:
     virtual ~AbstractSensor() = default;
     virtual void accept(SensorVisitorInterface& visitor) = 0;
     void registerObserver(SensorObserverInterface* observer);
-    std::vector<int> generateRandomHistory(int, int);
+    void generateRandomHistory(int, int);
 };
 }
 

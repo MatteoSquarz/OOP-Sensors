@@ -12,7 +12,8 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    Sensor::LuminositySensor prova("ciao", "1dsfdgsgsdfsdsdsdsdfsfsfsdsd22", "re", true, true, 20, 100);
+    Sensor::TemperatureSensor prova("ciao", "1dsfdgsgsdfsdsdsdsdfsfsfsdsd22", "re", true, true, 20, 100);
+    //prova.generateRandomHistory(0, 100);
     Sensor::View::MainWindow finestra(prova);
     
     finestra.show();

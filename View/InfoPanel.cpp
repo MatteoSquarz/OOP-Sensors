@@ -16,7 +16,7 @@ InfoPanel::InfoPanel(Sensor::AbstractSensor& sensor, QWidget* parent): QWidget(p
     layout->addLayout(commands);
     QPushButton* modify = new QPushButton("modify");
     commands->addWidget(modify, 0, 0, 1, 1);
-    //connect(attack, &QPushButton::pressed, this, &HeroPanel::attack);
+    connect(modify, &QPushButton::pressed, this, &InfoPanel::modify);
 
     QPushButton* delete_button = new QPushButton("delete");
     commands->addWidget(delete_button, 0, 1, 1, 1);

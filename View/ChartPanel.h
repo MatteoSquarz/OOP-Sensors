@@ -18,7 +18,7 @@ signals:
 
 public:
     ChartPanel(Sensor::AbstractSensor& sensor, QWidget* parent =0);
-    void notify(AbstractSensor& sensor) override;
+    void notify(Sensor::AbstractSensor& sensor) override;
 };   
 
 

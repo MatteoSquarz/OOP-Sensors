@@ -8,7 +8,7 @@ LuminositySensor::LuminositySensor(const std::string name, const std::string des
 int LuminositySensor::getMinLuminosity() const{ return min_Luminosity;}
 int LuminositySensor::getMaxLuminosity() const{ return max_Luminosity;}
 
-
+void LuminositySensor::setMinLuminosity(int min) {min_Luminosity=min;}
 
 
 void LuminositySensor::accept(SensorVisitorInterface& visitor) {
