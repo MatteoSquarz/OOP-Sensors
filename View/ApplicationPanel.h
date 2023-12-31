@@ -15,7 +15,8 @@ private:
     std::vector<AbstractSensor*>& sensorList;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
-
+public slots:
+    void changeSensor();
 };   
 
 

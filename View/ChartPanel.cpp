@@ -11,11 +11,11 @@
 namespace Sensor {
 namespace View {
 
-ChartPanel::ChartPanel(Sensor::AbstractSensor& sensor, QWidget* parent): QWidget(parent){
+ChartPanel::ChartPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget(parent){
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     SensorChartVisitor visitor; 
-    sensor.accept(visitor);
+    sensor->accept(visitor);
     chartView = visitor.getChartView();
     layout->addWidget(chartView);
     QGridLayout* commands = new QGridLayout();
@@ -23,13 +23,20 @@ ChartPanel::ChartPanel(Sensor::AbstractSensor& sensor, QWidget* parent): QWidget
     QPushButton* simulation = new QPushButton("Simulazione");
     commands->addWidget(simulation, 0, 0, 1, 1);
     connect(simulation, &QPushButton::pressed, this, &ChartPanel::simulation);
-    sensor.registerObserver(this);
+    sensor->registerObserver(this);
 }
 
 
-void ChartPanel::notify(AbstractSensor& sensor) {
+void ChartPanel::notify(AbstractSensor* sensor) {
     SensorChartVisitor visitor; 
-    sensor.accept(visitor);
+    sensor->accept(visitor);
+    QChartView* chartViewRitornato = visitor.getChartView();
+    chartView->setChart(chartViewRitornato->chart());
+}
+void ChartPanel::refresh(AbstractSensor* sensor) {
+    sensor->registerObserver(this);
+    SensorChartVisitor visitor; 
+    sensor->accept(visitor);
     QChartView* chartViewRitornato = visitor.getChartView();
     chartView->setChart(chartViewRitornato->chart());
 }

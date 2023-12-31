@@ -4,7 +4,7 @@
 #include "../TemperatureSensor.h"
 #include "../MotionSensor.h"
 #include "../LuminositySensor.h"
-
+#include <iostream>
 namespace Sensor{
 namespace View {
 

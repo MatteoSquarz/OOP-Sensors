@@ -15,7 +15,7 @@ bool AbstractSensor::isIndoor() const{ return indoor;}
 
 void AbstractSensor::setName(std::string n) { 
 	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
-        (*observer)->notify(*this);
+        (*observer)->notify(this);
     }
 	name = n;
 }
@@ -37,7 +37,7 @@ void AbstractSensor::generateRandomHistory(int minValue, int maxValue){
         history.push_back(random);
 	}
 	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
-        (*observer)->notify(*this);
+        (*observer)->notify(this);
     }
 }
 

@@ -12,7 +12,7 @@ namespace View {
 class Info: public QWidget, public SensorObserverInterface {
 Q_OBJECT
 private:
-    AbstractSensor& sensor;
+    AbstractSensor* sensor;
     QLabel* name_label;
     QLabel* description_label;
     QLabel* id_label;
@@ -21,9 +21,10 @@ private:
     QLabel* campi_dati_1;
     QLabel* campi_dati_2;
 public:
-    Info(AbstractSensor& sensor, QWidget* parent = 0);
-    void show();
-    void notify(AbstractSensor& sensor) override;
+    Info(AbstractSensor* sensor, QWidget* parent = 0);
+    void show(AbstractSensor* sensor);
+
+    void notify(AbstractSensor* sensor) override;
 };
 
 }

@@ -10,10 +10,10 @@ Q_OBJECT
 private:
     //QLabel* artwork;
     Info* info;
-    
+    Sensor::AbstractSensor* sensor;
 public:
-    InfoPanel(Sensor::AbstractSensor& sensor, QWidget* parent =0);
-
+    InfoPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
+    void refresh(Sensor::AbstractSensor*);
 signals:
     void modify();
 };   

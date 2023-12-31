@@ -12,13 +12,12 @@ Q_OBJECT
 private:
     InfoPanel* infoPanel;
     ChartPanel* chartPanel;
-    Sensor::AbstractSensor& sensor;
+    Sensor::AbstractSensor* sensor;
 public:
-    SensorPanel(Sensor::AbstractSensor& sensor, QWidget* parent =0);
-
+    SensorPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
+    void refresh(Sensor::AbstractSensor*);
 public slots:
     void generateSimulation();
-    //void changeName();
 };   
 
 

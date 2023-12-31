@@ -62,6 +62,8 @@
         "iomanip": "cpp",
         "sstream": "cpp",
         "qvboxlayout": "cpp",
-        "qhboxlayout": "cpp"
+        "qhboxlayout": "cpp",
+        "qlistwidget": "cpp",
+        "qdatetimeaxis": "cpp"
     }
 }
