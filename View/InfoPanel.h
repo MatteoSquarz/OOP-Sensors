@@ -16,6 +16,7 @@ public:
     void refresh(Sensor::AbstractSensor*);
 signals:
     void modify();
+    void deleteSensor();
 };   
 
 

@@ -16,6 +16,9 @@ private:
 public:
     SensorPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
     void refresh(Sensor::AbstractSensor*);
+    AbstractSensor* getCurrentSensor() const;
+signals:
+    void deleteSensor();
 public slots:
     void generateSimulation();
 };   

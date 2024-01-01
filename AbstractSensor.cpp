@@ -45,6 +45,7 @@ bool AbstractSensor::operator== (const AbstractSensor& s){
 	if(name == s.getName())	return true; 
 	else return false;
 }
+
 AbstractSensor::AbstractSensor(){}
 
 }

@@ -19,6 +19,7 @@ InfoPanel::InfoPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget(p
     connect(modify, &QPushButton::pressed, this, &InfoPanel::modify);
 
     QPushButton* delete_button = new QPushButton("delete");
+    connect(delete_button, &QPushButton::pressed, this, &InfoPanel::deleteSensor);
     commands->addWidget(delete_button, 0, 1, 1, 1);
     
 }

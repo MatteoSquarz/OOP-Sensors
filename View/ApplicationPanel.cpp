@@ -1,5 +1,6 @@
 #include "../AbstractSensor.h"
 #include "../TemperatureSensor.h"
+#include "../LuminositySensor.h"
 #include "../MotionSensor.h"
 #include "ApplicationPanel.h"
 #include "SensorPanel.h"
@@ -16,12 +17,13 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
     searchPanel = new SearchPanel(sensorList);
     layout->addWidget(searchPanel);
     //std::vector<AbstractSensor*> lista = sensorList.getList();
-    MotionSensor* prova = new MotionSensor("prova", "prova", "prova", true, true, 0, 1);
-    sensorPanel = new SensorPanel(prova);
+    MotionSensor* esempio = new MotionSensor();
+    sensorPanel = new SensorPanel(esempio);
     layout->addWidget(sensorPanel); 
     connect(searchPanel, &SearchPanel::itemClicked, this, &ApplicationPanel::changeSensor);
     connect(searchPanel, &SearchPanel::search, this, &ApplicationPanel::searchList);
     connect(searchPanel, &SearchPanel::clearSearch, this, &ApplicationPanel::clearSearchList);
+    connect(sensorPanel, &SensorPanel::deleteSensor, this, &ApplicationPanel::deleteSensorFromList);
 }
 
 void ApplicationPanel::changeSensor(){
@@ -49,6 +51,16 @@ void ApplicationPanel::clearSearchList(){
     searchPanel->refresh(sensorList);
 }
 
-
+void ApplicationPanel::deleteSensorFromList(){
+    AbstractSensor* sensorToDelete = sensorPanel->getCurrentSensor();
+    sensorList.erase(std::remove(sensorList.begin(), sensorList.end(), sensorToDelete), sensorList.end());
+    searchPanel->refresh(sensorList);
+    if(!sensorList.empty())
+        sensorPanel->refresh(sensorList[0]);
+    else{
+        MotionSensor* esempio = new MotionSensor();
+        sensorPanel->refresh(esempio);
+    }
+}
 }
 }

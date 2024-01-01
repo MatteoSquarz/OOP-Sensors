@@ -9,7 +9,7 @@ MotionSensor::MotionSensor(const std::string name, const std::string description
 unsigned int MotionSensor::getSensibility() const{ return sensibility;}
 unsigned int MotionSensor::getDetectionRange() const{ return detectionRange;}
 
-
+MotionSensor::MotionSensor(){}
 
 
 void MotionSensor::accept(SensorVisitorInterface& visitor) {

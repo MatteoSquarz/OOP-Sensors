@@ -20,6 +20,7 @@ public slots:
     void changeSensor();
     void searchList();
     void clearSearchList();
+    void deleteSensorFromList();
 };   
 
 
