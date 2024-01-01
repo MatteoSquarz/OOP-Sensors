@@ -20,12 +20,35 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
     sensorPanel = new SensorPanel(prova);
     layout->addWidget(sensorPanel); 
     connect(searchPanel, &SearchPanel::itemClicked, this, &ApplicationPanel::changeSensor);
+    connect(searchPanel, &SearchPanel::search, this, &ApplicationPanel::searchList);
+    connect(searchPanel, &SearchPanel::clearSearch, this, &ApplicationPanel::clearSearchList);
 }
 
 void ApplicationPanel::changeSensor(){
-    int index = searchPanel->returnIndexList();
-    sensorPanel->refresh(sensorList[index]);
+    std::string nameSensor = searchPanel->returnTextList();
+    for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
+        if((*it)->getName() == nameSensor)
+            sensorPanel->refresh(*it);
+    }
+
 }
+
+void ApplicationPanel::searchList(){
+    std::string search_target = searchPanel->returnSearchTextBox();
+    
+    std::vector<AbstractSensor*> sensorSearchList;
+    for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
+        if((*it)->getName() == search_target)
+            searchPanel->refreshSearch(*it);
+    }
+    //searchPanel->refreshSearch(sensorSearchList);
+    
+}
+
+void ApplicationPanel::clearSearchList(){
+    searchPanel->refresh(sensorList);
+}
+
 
 }
 }

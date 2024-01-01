@@ -14,11 +14,13 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
 
-    QLineEdit* search_text_box = new QLineEdit();
+    search_text_box = new QLineEdit();
     commands->addWidget(search_text_box, 0, 0);
     QPushButton* search = new QPushButton("cerca");
+    connect(search, &QPushButton::pressed, this, &SearchPanel::search);
     commands->addWidget(search, 0, 1);
     QPushButton* azzera_search = new QPushButton("azzera");
+    connect(azzera_search, &QPushButton::pressed, this, &SearchPanel::clearSearch);
     commands->addWidget(azzera_search, 1, 1);
     listWidget = new QListWidget(this);
     for(unsigned int i = 0; i < sensorList.size(); ++i){
@@ -32,21 +34,33 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
 }
 
 
-void SearchPanel::refresh(std::vector<AbstractSensor*>& newList){
-    sensorList = newList;
+void SearchPanel::refreshSearch(AbstractSensor* sensorSearched){
+    listWidget->clear();
+ 
+    QListWidgetItem* newItem = new QListWidgetItem;
+    newItem->setText(QString::fromStdString(sensorSearched->getName()));
+    listWidget->insertItem(0, newItem);
+
+}
+
+void SearchPanel::refresh(std::vector<AbstractSensor*>& list){
+    sensorList = list;
     listWidget->clear();
     for(unsigned int i = 0; i < sensorList.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;
         newItem->setText(QString::fromStdString(sensorList[i]->getName()));
         listWidget->insertItem(i, newItem);
     }
+    search_text_box->setText("");
 }
 
-int SearchPanel::returnIndexList() const{
-    //const QModelIndex index = listWidget->indexFromItem(item);
-    int i = listWidget->currentRow();
-    return i;
+std::string SearchPanel::returnTextList() const{
+    return (listWidget->currentItem()->text()).toStdString();
 }
 
+std::string SearchPanel::returnSearchTextBox() const{
+    std::string search_target = (search_text_box->text()).toStdString();
+    return search_target;
+}
 }
 }

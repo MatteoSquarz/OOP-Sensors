@@ -13,10 +13,13 @@ private:
     SensorPanel* sensorPanel;
     SearchPanel* searchPanel;
     std::vector<AbstractSensor*>& sensorList;
+    //std::vector<AbstractSensor*>& sensorSearchList;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
 public slots:
     void changeSensor();
+    void searchList();
+    void clearSearchList();
 };   
 
 

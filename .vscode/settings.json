@@ -64,6 +64,7 @@
         "qvboxlayout": "cpp",
         "qhboxlayout": "cpp",
         "qlistwidget": "cpp",
-        "qdatetimeaxis": "cpp"
+        "qdatetimeaxis": "cpp",
+        "qpushbutton": "cpp"
     }
 }
