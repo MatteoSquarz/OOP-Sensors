@@ -4,6 +4,7 @@
 #include "../AbstractSensor.h"
 #include "SensorPanel.h"
 #include "SearchPanel.h"
+#include "InsertWindow.h"
 namespace Sensor{
 namespace View {
 
@@ -13,6 +14,7 @@ private:
     SensorPanel* sensorPanel;
     SearchPanel* searchPanel;
     std::vector<AbstractSensor*>& sensorList;
+    InsertWindow* insertWindow;
     //std::vector<AbstractSensor*>& sensorSearchList;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
@@ -21,6 +23,7 @@ public slots:
     void searchList();
     void clearSearchList();
     void deleteSensorFromList();
+    void addSensorWindow();
 };   
 
 

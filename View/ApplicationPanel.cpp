@@ -2,6 +2,7 @@
 #include "../TemperatureSensor.h"
 #include "../LuminositySensor.h"
 #include "../MotionSensor.h"
+#include "InsertWindow.h"
 #include "ApplicationPanel.h"
 #include "SensorPanel.h"
 #include "SearchPanel.h"
@@ -23,6 +24,7 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
     connect(searchPanel, &SearchPanel::itemClicked, this, &ApplicationPanel::changeSensor);
     connect(searchPanel, &SearchPanel::search, this, &ApplicationPanel::searchList);
     connect(searchPanel, &SearchPanel::clearSearch, this, &ApplicationPanel::clearSearchList);
+    connect(searchPanel, &SearchPanel::addSensor, this, &ApplicationPanel::addSensorWindow);
     connect(sensorPanel, &SensorPanel::deleteSensor, this, &ApplicationPanel::deleteSensorFromList);
 }
 
@@ -61,6 +63,11 @@ void ApplicationPanel::deleteSensorFromList(){
         MotionSensor* esempio = new MotionSensor();
         sensorPanel->refresh(esempio);
     }
+}
+
+void ApplicationPanel::addSensorWindow(){
+    insertWindow = new InsertWindow();
+    insertWindow->show();
 }
 }
 }

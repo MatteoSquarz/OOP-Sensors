@@ -29,6 +29,9 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
         listWidget->insertItem(i, newItem);
     }
     layout->addWidget(listWidget);
+    QPushButton* add_sensor = new QPushButton("Aggiungi sensore");
+    layout->addWidget(add_sensor);
+    connect(add_sensor, &QPushButton::pressed, this, &SearchPanel::addSensor);
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(itemClicked(QListWidgetItem*)));
     //connect(this, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(returnIndex()));
 }

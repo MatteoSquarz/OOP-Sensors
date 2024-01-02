@@ -25,6 +25,7 @@ signals:
     void itemClicked(QListWidgetItem*);
     void search();
     void clearSearch();
+    void addSensor();
 public slots:
     
 
