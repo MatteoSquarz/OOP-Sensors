@@ -16,10 +16,9 @@ MainWindow::MainWindow(std::vector<AbstractSensor*>& sensorList) : sensorList(se
     auto* openAction = this->menuBar()->addAction("OPEN");
     connect(openAction, &QAction::triggered, [this](bool checked){open();});
     auto* saveAction = this->menuBar()->addAction("SAVE");
-    auto* addAction = this->menuBar()->addAction("ADD SENSOR");
     ApplicationPanel* sensore = new ApplicationPanel(sensorList);
     setCentralWidget(sensore);
-    
+
 
 }
 

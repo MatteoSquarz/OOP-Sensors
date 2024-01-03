@@ -21,11 +21,12 @@ private:
     QLabel* label_specifica_1;
     QLabel* label_specifica_2;
     
-
+    
 public:
     InsertPanel();
 signals:
     void changeComboBoxTypeSensor();
+    void addSensor(std::vector<std::string>);
 public slots:
     void refreshTypeSensor();
     void retrieveData();

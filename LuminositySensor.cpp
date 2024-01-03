@@ -5,6 +5,8 @@ LuminositySensor::LuminositySensor(const std::string name, const std::string des
     AbstractSensor(name, description, id, isSmart, isIndoor), min_Luminosity(minLum), max_Luminosity(maxLum)  {}
 
 
+LuminositySensor::LuminositySensor(){}
+
 int LuminositySensor::getMinLuminosity() const{ return min_Luminosity;}
 int LuminositySensor::getMaxLuminosity() const{ return max_Luminosity;}
 

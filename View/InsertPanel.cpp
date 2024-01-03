@@ -2,6 +2,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QComboBox>
+#include <QMessageBox>
 #include <QString>
 #include <QPushButton>
 #include <iostream>
@@ -88,29 +89,31 @@ void InsertPanel::refreshTypeSensor(){
 }
 
 void InsertPanel::retrieveData(){
-    if(name_text_box->text().toStdString() == "") //aggiungere altri campi
-        std::cout << "try again";
+    if(name_text_box->text().toStdString() == "" || id_text_box->text().toStdString() == "" || description_text_box->text().toStdString() == "" ||
+        campo_specifico_1->text().toStdString() == "" || campo_specifico_2->text().toStdString() == ""){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Attenzione inserire tutti i campi!");
+        messageBox.setFixedSize(500,200);
+    }
+    else{
+        std::vector<std::string> data;
+        data.push_back(tipo_sensore_combo_box->currentText().toStdString());
+        data.push_back(name_text_box->text().toStdString());
+        data.push_back(id_text_box->text().toStdString());
+        data.push_back(description_text_box->text().toStdString());
+        data.push_back(isSmart_combo_box->currentText().toStdString());
+        data.push_back(isIndoor_combo_box->currentText().toStdString());
+        data.push_back(campo_specifico_1->text().toStdString());
+        data.push_back(campo_specifico_2->text().toStdString());
+        emit addSensor(data);
+    }
     
-
+    
+    
     //meglio creare un vettore da ritornare con un getter nell'application panel
     //cercare come emettere un segnale EMIT SIGNAL da qui per dire all'application panel di fare la get dei dati
     //emit signal
-    std::stringstream ss;
-    ss << tipo_sensore_combo_box->currentText().toStdString() << " " << name_text_box->text().toStdString() << " " << id_text_box->text().toStdString() << " "
-        << description_text_box->text().toStdString() << " ";
-    if(isIndoor_combo_box->currentText().toStdString() == "Indoor")
-        ss << true << " ";
-    
-    std::string type;
-    ss >> type;
-    std::string name;
-    ss >> name;
-    std::string id;
-    ss >> id;
-    std::string description;
-    ss >> description;
 
-    std::cout << type << name;// << id << description;
     
 }
 

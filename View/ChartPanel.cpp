@@ -13,7 +13,7 @@ namespace View {
 
 ChartPanel::ChartPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget(parent){
     QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    //layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     SensorChartVisitor visitor; 
     sensor->accept(visitor);
     chartView = visitor.getChartView();

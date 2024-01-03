@@ -16,6 +16,7 @@ private:
     std::vector<AbstractSensor*>& sensorList;
     InsertWindow* insertWindow;
     //std::vector<AbstractSensor*>& sensorSearchList;
+    bool checkNameExistence(std::string) const;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
 public slots:
@@ -23,6 +24,7 @@ public slots:
     void searchList();
     void clearSearchList();
     void deleteSensorFromList();
+    void addSensorToList(std::vector<std::string>);
     void addSensorWindow();
 };   
 

@@ -9,7 +9,8 @@ private:
     int min_Temperature;
     int max_Temperature;
 public:
-    TemperatureSensor(const std::string a, const std::string a1, const std::string a2, const bool a3, const bool a4, const int a5, const int a6);
+    TemperatureSensor(const std::string, const std::string, const std::string, const bool, const bool, const int, const int);
+    TemperatureSensor();
     int getMinTemperature() const;
     int getMaxTemperature() const;
     void accept(SensorVisitorInterface& visitor) override;
