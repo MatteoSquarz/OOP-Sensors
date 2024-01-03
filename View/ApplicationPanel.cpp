@@ -42,10 +42,11 @@ void ApplicationPanel::searchList(){
     
     std::vector<AbstractSensor*> sensorSearchList;
     for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
-        if((*it)->getName() == search_target)
-            searchPanel->refreshSearch(*it);
+        if(((*it)->getName()).find(search_target) != std::string::npos)
+            //searchPanel->refreshSearch(*it);
+            sensorSearchList.push_back(*it);
     }
-    //searchPanel->refreshSearch(sensorSearchList);
+    searchPanel->refreshSearch(sensorSearchList);
     
 }
 

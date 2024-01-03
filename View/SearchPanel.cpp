@@ -37,13 +37,19 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
 }
 
 
-void SearchPanel::refreshSearch(AbstractSensor* sensorSearched){
+void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchList){
     listWidget->clear();
- 
+    //da modificare mostrare piu risultati di un vector
+    /*
     QListWidgetItem* newItem = new QListWidgetItem;
     newItem->setText(QString::fromStdString(sensorSearched->getName()));
     listWidget->insertItem(0, newItem);
-
+    */
+    for(unsigned int i = 0; i < sensorSearchList.size(); ++i){
+        QListWidgetItem* newItem = new QListWidgetItem;
+        newItem->setText(QString::fromStdString(sensorSearchList[i]->getName()));
+        listWidget->insertItem(i, newItem);
+    }
 }
 
 void SearchPanel::refresh(std::vector<AbstractSensor*>& list){
