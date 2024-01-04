@@ -8,7 +8,6 @@ namespace View {
 class InfoPanel : public QWidget{
 Q_OBJECT
 private:
-    //QLabel* artwork;
     Info* info;
     Sensor::AbstractSensor* sensor;
 public:

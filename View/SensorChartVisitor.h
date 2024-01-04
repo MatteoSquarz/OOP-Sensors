@@ -13,7 +13,6 @@ namespace View {
 class SensorChartVisitor: public SensorVisitorInterface {
   private:
     QChartView* chartView;
-
   public:
     QChartView* getChartView();
     virtual void visitTemperatureSensor(TemperatureSensor&);

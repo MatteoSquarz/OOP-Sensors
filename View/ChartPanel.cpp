@@ -20,9 +20,11 @@ ChartPanel::ChartPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget
     layout->addWidget(chartView);
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
-    QPushButton* simulation = new QPushButton("Simulazione");
-    commands->addWidget(simulation, 0, 0, 1, 1);
-    connect(simulation, &QPushButton::pressed, this, &ChartPanel::simulation);
+    QPushButton* simulation_button = new QPushButton("Genera simulazione");
+    simulation_button->setIcon(QIcon("assets/simulation.png"));
+    simulation_button->setIconSize(QSize(20,20));
+    commands->addWidget(simulation_button, 0, 0, 1, 1);
+    connect(simulation_button, &QPushButton::pressed, this, &ChartPanel::simulation);
     sensor->registerObserver(this);
 }
 

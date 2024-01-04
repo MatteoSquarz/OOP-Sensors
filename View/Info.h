@@ -13,6 +13,8 @@ class Info: public QWidget, public SensorObserverInterface {
 Q_OBJECT
 private:
     AbstractSensor* sensor;
+    QLabel* artwork;
+    QLabel* type_sensor_label;
     QLabel* name_label;
     QLabel* description_label;
     QLabel* id_label;

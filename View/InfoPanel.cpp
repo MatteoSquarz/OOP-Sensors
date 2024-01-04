@@ -14,13 +14,19 @@ InfoPanel::InfoPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget(p
     layout->addWidget(info);
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
-    QPushButton* modify = new QPushButton("modifica");
-    commands->addWidget(modify, 0, 0, 1, 1);
-    connect(modify, &QPushButton::pressed, this, &InfoPanel::modifySensor);
+    QPushButton* modify_button = new QPushButton("");
+    modify_button->setIcon(QIcon("assets/edit.png"));
+    modify_button->setIconSize(QSize(25,25));
+    modify_button->setFixedSize(QSize(35,35));
+    commands->addWidget(modify_button, 0, 0);
+    connect(modify_button, &QPushButton::pressed, this, &InfoPanel::modifySensor);
 
-    QPushButton* delete_button = new QPushButton("cancella");
+    QPushButton* delete_button = new QPushButton("");
+    delete_button->setIcon(QIcon("assets/trash.png"));
+    delete_button->setIconSize(QSize(25,25));
+    delete_button->setFixedSize(QSize(35,35));
     connect(delete_button, &QPushButton::pressed, this, &InfoPanel::deleteSensor);
-    commands->addWidget(delete_button, 0, 1, 1, 1);
+    commands->addWidget(delete_button, 0, 1);
     
 }
 

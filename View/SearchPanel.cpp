@@ -16,10 +16,16 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
 
     search_text_box = new QLineEdit();
     commands->addWidget(search_text_box, 0, 0);
-    QPushButton* search = new QPushButton("cerca");
+    QPushButton* search = new QPushButton("");
+    search->setIcon(QIcon("assets/search.png"));
+    search->setIconSize(QSize(20,20));
+    search->setFixedSize(QSize(30,30));
     connect(search, &QPushButton::pressed, this, &SearchPanel::search);
     commands->addWidget(search, 0, 1);
-    QPushButton* azzera_search = new QPushButton("azzera");
+    QPushButton* azzera_search = new QPushButton("");
+    azzera_search->setIcon(QIcon("assets/refresh.png"));
+    azzera_search->setIconSize(QSize(20,20));
+    azzera_search->setFixedSize(QSize(30,30));
     connect(azzera_search, &QPushButton::pressed, this, &SearchPanel::clearSearch);
     commands->addWidget(azzera_search, 1, 1);
     listWidget = new QListWidget(this);
@@ -30,6 +36,8 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
     }
     layout->addWidget(listWidget);
     QPushButton* add_sensor = new QPushButton("Aggiungi sensore");
+    add_sensor->setIcon(QIcon("assets/insert.png"));
+    add_sensor->setIconSize(QSize(20,20));
     layout->addWidget(add_sensor);
     connect(add_sensor, &QPushButton::pressed, this, &SearchPanel::addSensor);
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(itemClicked(QListWidgetItem*)));

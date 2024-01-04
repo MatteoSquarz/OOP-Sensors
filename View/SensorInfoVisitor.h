@@ -11,9 +11,10 @@ namespace View {
 class SensorInfoVisitor: public SensorVisitorInterface {
   private:
     std::vector<QWidget*> widgets;
-
+    QPixmap* image;
   public:
-    std::vector<QWidget*> getWidgets();
+    std::vector<QWidget*> getWidgets() const;
+    QPixmap* getImage() const;
     virtual void visitTemperatureSensor(TemperatureSensor&);
     virtual void visitMotionSensor(MotionSensor&);
     virtual void visitLuminositySensor(LuminositySensor&);
