@@ -34,9 +34,9 @@ Info::Info(AbstractSensor* sensor, QWidget* parent): QWidget(parent), sensor(sen
 
 void Info::show(AbstractSensor* s) {
     s->registerObserver(this);
-    name_label->setText("Name: " + QString::fromStdString(s->getName()));
+    name_label->setText("Nome: " + QString::fromStdString(s->getName()));
     id_label->setText("ID: " + QString::fromStdString(s->getID()));
-    description_label->setText("Description: " + QString::fromStdString(s->getDescription()));
+    description_label->setText("Descrizione: " + QString::fromStdString(s->getDescription()));
     s->isIndoor() ? is_indoor_label->setText("Sensore Indoor") : is_indoor_label->setText("Sensore Outdoor");
     s->isSmart() ? is_smart_label->setText("Supporta SmartApp") : is_smart_label->setText("Non supporta SmartApp");
     
@@ -50,9 +50,9 @@ void Info::show(AbstractSensor* s) {
 }
 
 void Info::notify(AbstractSensor* sensor) {
-    name_label->setText("Name: " + QString::fromStdString(sensor->getName()));
+    name_label->setText("Nome: " + QString::fromStdString(sensor->getName()));
     id_label->setText("ID: " + QString::fromStdString(sensor->getID()));
-    description_label->setText("Description: " + QString::fromStdString(sensor->getDescription()));
+    description_label->setText("Descrizione: " + QString::fromStdString(sensor->getDescription()));
     sensor->isIndoor() ? is_indoor_label->setText("Sensore Indoor") : is_indoor_label->setText("Sensore Outdoor");
     sensor->isSmart() ? is_smart_label->setText("Supporta SmartApp") : is_smart_label->setText("Non supporta SmartApp");
     

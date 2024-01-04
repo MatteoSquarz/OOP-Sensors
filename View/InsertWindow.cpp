@@ -45,20 +45,20 @@ InsertWindow::InsertWindow() {
     isIndoor_combo_box->addItem("Outdoor");
     layout->addWidget(isIndoor_combo_box);
     typeSensor_label->setText("Tipo sensore:");
-    name_label->setText("Name:");
+    name_label->setText("Nome:");
     id_label->setText("ID:");
-    description_label->setText("Description:");
+    description_label->setText("Descrizione:");
     is_indoor_label->setText("Sensore Indoor/Outdoor");
     is_smart_label->setText("Supporta SmartApp Si/No");
     
     label_specifica_1 = new QLabel();
-    label_specifica_1->setText("Min Temperatura:");
+    label_specifica_1->setText("Min Temperatura: (°C)");
     layout->addWidget(label_specifica_1);
     campo_specifico_1 = new QLineEdit();
     layout->addWidget(campo_specifico_1);
     
     label_specifica_2 = new QLabel();
-    label_specifica_2->setText("Max Temperatura:");
+    label_specifica_2->setText("Max Temperatura: (°C)");
     layout->addWidget(label_specifica_2);
     campo_specifico_2 = new QLineEdit();
     layout->addWidget(campo_specifico_2);
@@ -71,16 +71,16 @@ InsertWindow::InsertWindow() {
 
 void InsertWindow::refreshTypeSensor(){
     if((tipo_sensore_combo_box->currentText()).toStdString() == "Luminosità"){
-        label_specifica_1->setText("Min Luminosità:");
-        label_specifica_2->setText("Max Luminosità:");
+        label_specifica_1->setText("Min Luminosità: (lux)");
+        label_specifica_2->setText("Max Luminosità: (lux)");
     }
     else if((tipo_sensore_combo_box->currentText()).toStdString() == "Temperatura"){
-        label_specifica_1->setText("Min Temperatura:");
-        label_specifica_2->setText("Max Temperatura:");
+        label_specifica_1->setText("Min Temperatura: (°C)");
+        label_specifica_2->setText("Max Temperatura: (°C)");
     }
     else if((tipo_sensore_combo_box->currentText()).toStdString() == "Movimento"){
         label_specifica_1->setText("Sensibilità:");
-        label_specifica_2->setText("Raggio di movimento:");
+        label_specifica_2->setText("Raggio di movimento: (m)");
     }
 
 }
@@ -104,14 +104,7 @@ void InsertWindow::retrieveData(){
         data.push_back(campo_specifico_2->text().toStdString());
         emit addSensor(data);
     }
-    
-    
-    
-    //meglio creare un vettore da ritornare con un getter nell'application panel
-    //cercare come emettere un segnale EMIT SIGNAL da qui per dire all'application panel di fare la get dei dati
-    //emit signal
 
-    
 }
 
 

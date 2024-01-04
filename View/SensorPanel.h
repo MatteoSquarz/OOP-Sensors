@@ -19,6 +19,7 @@ public:
     AbstractSensor* getCurrentSensor() const;
 signals:
     void deleteSensor();
+    void modifySensor();
 public slots:
     void generateSimulation();
 };   

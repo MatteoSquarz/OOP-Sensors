@@ -14,6 +14,7 @@ public:
     TemperatureSensor();
     int getMinTemperature() const;
     int getMaxTemperature() const;
+    void modifyData(const std::string, const std::string, const std::string, const bool, const bool, const int, const int);
     void accept(SensorVisitorInterface& visitor) override;
     ~TemperatureSensor(){}
 };

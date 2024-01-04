@@ -13,16 +13,15 @@ const std::vector<int>& AbstractSensor::getHistory() const{ return history;}
 bool AbstractSensor::isSmart() const{ return smartApp;}
 bool AbstractSensor::isIndoor() const{ return indoor;}
 
-void AbstractSensor::setName(std::string n) { 
-	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
-        (*observer)->notify(this);
-    }
+void AbstractSensor::modifyData(const std::string n, const std::string desc, const std::string id, const bool isSmart, const bool isIndoor){
 	name = n;
+	description = desc;
+	ID = id;
+	smartApp = isSmart;
+	indoor = isIndoor;
 }
-void AbstractSensor::setDescription(std::string d) { description = d;}
-void AbstractSensor::setID(std::string i) { ID = i;}
-void AbstractSensor::setIsIndoor(bool val) { indoor = val;}
-void AbstractSensor::setIsSmart(bool val) { smartApp = val;}
+
+
 
 void AbstractSensor::registerObserver(SensorObserverInterface* observer) {
     observers.push_back(observer);

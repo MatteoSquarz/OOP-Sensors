@@ -1,13 +1,15 @@
-#ifndef VIEW_INSERT_PANEL_H
-#define VIEW_INSERT_PANEL_H
+#ifndef VIEW_MODIFY_WINDOW_H
+#define VIEW_MODIFY_WINDOW_H
 #include <QWidget>
+#include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
 #include <QComboBox>
+#include "../AbstractSensor.h"
 namespace Sensor{
 namespace View {
 
-class InsertPanel : public QWidget{
+class ModifyWindow : public QDialog{
 Q_OBJECT
 private:
     QLineEdit* name_text_box;
@@ -17,18 +19,18 @@ private:
     QLineEdit* campo_specifico_2;
     QComboBox* isIndoor_combo_box;
     QComboBox* isSmart_combo_box;
-    QComboBox* tipo_sensore_combo_box;
+    QLineEdit* type_sensor;
     QLabel* label_specifica_1;
     QLabel* label_specifica_2;
-    
+    AbstractSensor* sensor;
     
 public:
-    InsertPanel();
+    ModifyWindow(AbstractSensor*);
 signals:
-    void changeComboBoxTypeSensor();
-    void addSensor(std::vector<std::string>);
+    //void changeComboBoxTypeSensor();
+    void modifySensor(std::vector<std::string>);
 public slots:
-    void refreshTypeSensor();
+    //void refreshTypeSensor();
     void retrieveData();
 };   
 

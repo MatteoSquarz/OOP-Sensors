@@ -15,7 +15,7 @@ public:
     LuminositySensor();
     int getMinLuminosity() const;
     int getMaxLuminosity() const;
-    void setMinLuminosity(int);
+    void modifyData(const std::string, const std::string, const std::string, const bool, const bool, const int, const int);
     void accept (SensorVisitorInterface& visitor) override;
     ~LuminositySensor(){}
 };

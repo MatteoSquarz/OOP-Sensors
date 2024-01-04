@@ -16,9 +16,9 @@ class SensorChartVisitor: public SensorVisitorInterface {
 
   public:
     QChartView* getChartView();
-    virtual void visitTemperatureSensor(TemperatureSensor& hero);
-    virtual void visitMotionSensor(MotionSensor& monster);
-    virtual void visitLuminositySensor(LuminositySensor& monster);
+    virtual void visitTemperatureSensor(TemperatureSensor&);
+    virtual void visitMotionSensor(MotionSensor&);
+    virtual void visitLuminositySensor(LuminositySensor&);
 };
 
 }

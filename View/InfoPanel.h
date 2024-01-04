@@ -15,7 +15,7 @@ public:
     InfoPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
     void refresh(Sensor::AbstractSensor*);
 signals:
-    void modify();
+    void modifySensor();
     void deleteSensor();
 };   
 

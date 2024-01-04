@@ -1,19 +1,20 @@
-#ifndef VIEW_SENSOR_INFO_VISITOR_H
-#define VIEW_SENSOR_INFO_VISITOR_H
+#ifndef VIEW_MODIFY_WINDOW_VISITOR_H
+#define VIEW_MODIFY_WINDOW_VISITOR_H
 
 #include <QWidget>
+#include <QLabel>
 #include "../SensorVisitorInterface.h"
 
 
 namespace Sensor{
 namespace View {
 
-class SensorInfoVisitor: public SensorVisitorInterface {
+class ModifyWindowVisitor: public SensorVisitorInterface {
   private:
-    std::vector<QWidget*> widgets;
+    std::vector<QLabel*> widgets;
 
   public:
-    std::vector<QWidget*> getWidgets();
+    std::vector<QLabel*> getWidgets();
     virtual void visitTemperatureSensor(TemperatureSensor&);
     virtual void visitMotionSensor(MotionSensor&);
     virtual void visitLuminositySensor(LuminositySensor&);
