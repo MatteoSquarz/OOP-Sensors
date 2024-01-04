@@ -4,7 +4,7 @@
 
 
 namespace Sensor{
-
+class err_negativeValue{};
 class MotionSensor : public AbstractSensor{
 private:
     unsigned int sensibility;

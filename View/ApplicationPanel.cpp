@@ -81,7 +81,6 @@ void ApplicationPanel::addSensorWindow(){
 }
 
 void ApplicationPanel::addSensorToList(std::vector<std::string> data){
-    //std::cout << data[1];
     std::string tipo_sensore = data[0];
     std::string name = data[1];
     std::string id = data[2];
@@ -122,6 +121,22 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
         searchPanel->refresh(sensorList);
         sensorPanel->refresh(new_sensor);
         insertWindow->close();
+    }
+    catch(err_maxminTemp){
+        messageBox.critical(0,"Error","Temperatura minima maggiore o uguale a quella massima!");
+        if(new_sensor != nullptr) delete new_sensor;
+    }
+    catch(err_maxminLum){
+        messageBox.critical(0,"Error","Luminosità minima maggiore o uguale a quella massima!");
+        if(new_sensor != nullptr) delete new_sensor;
+    }
+    catch(err_minUnderZero){
+        messageBox.critical(0,"Error","Luminosità minima negativa!");
+        if(new_sensor != nullptr) delete new_sensor;
+    }
+    catch(err_negativeValue){
+        messageBox.critical(0,"Error","Hai inserito dei valori negativi!");
+        if(new_sensor != nullptr) delete new_sensor;
     }
     catch(...){
         messageBox.critical(0,"Error","Sembra che tu abbia inserito dei valori errati!");

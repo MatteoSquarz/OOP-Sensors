@@ -4,7 +4,8 @@
 
 
 namespace Sensor{
-
+class err_maxminLum{};
+class err_minUnderZero{};
 class LuminositySensor : public AbstractSensor{
 private:
     int min_Luminosity;

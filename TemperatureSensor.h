@@ -4,6 +4,7 @@
 
 namespace Sensor{
 
+class err_maxminTemp{};
 class TemperatureSensor : public AbstractSensor{
 private:
     int min_Temperature;

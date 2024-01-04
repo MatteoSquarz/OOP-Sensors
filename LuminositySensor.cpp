@@ -2,7 +2,15 @@
 
 namespace Sensor{
 LuminositySensor::LuminositySensor(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor, const int minLum, const int maxLum):
-    AbstractSensor(name, description, id, isSmart, isIndoor), min_Luminosity(minLum), max_Luminosity(maxLum)  {}
+    AbstractSensor(name, description, id, isSmart, isIndoor){
+
+    if(minLum >= maxLum) throw err_maxminLum();
+    else if(minLum < 0) throw err_minUnderZero();
+    else{
+        min_Luminosity = minLum;
+        max_Luminosity = maxLum;
+    }
+}
 
 
 LuminositySensor::LuminositySensor(){}
