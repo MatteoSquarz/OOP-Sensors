@@ -21,6 +21,7 @@ private:
     bool checkNameExistence(std::string) const;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
+    void refresh();
 public slots:
     void changeSensor();
     void searchList();

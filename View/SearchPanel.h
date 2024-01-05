@@ -18,7 +18,7 @@ private:
 public:
     SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
     void refreshSearch(const std::vector<AbstractSensor*> sensorSearchList);
-    void refresh(std::vector<AbstractSensor*>& list);
+    void refresh();
     std::string returnTextList() const;
     std::string returnSearchTextBox() const;
 signals:

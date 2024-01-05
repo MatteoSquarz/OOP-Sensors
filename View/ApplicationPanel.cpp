@@ -58,13 +58,15 @@ void ApplicationPanel::searchList(){
 }
 
 void ApplicationPanel::clearSearchList(){
-    searchPanel->refresh(sensorList);
+    searchPanel->refresh();
 }
 
 void ApplicationPanel::deleteSensorFromList(){
     AbstractSensor* sensorToDelete = sensorPanel->getCurrentSensor();
+    std::cout << sensorToDelete->getName();
     sensorList.erase(std::remove(sensorList.begin(), sensorList.end(), sensorToDelete), sensorList.end());
-    searchPanel->refresh(sensorList);
+    delete sensorToDelete;
+    searchPanel->refresh();
     if(!sensorList.empty())
         sensorPanel->refresh(sensorList[0]);
     else{
@@ -120,7 +122,7 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
             new_sensor = new LuminositySensor(name, description, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
         }
         sensorList.push_back(new_sensor);
-        searchPanel->refresh(sensorList);
+        searchPanel->refresh();
         sensorPanel->refresh(new_sensor);
         sensorPanel->setDisabled(false);
         insertWindow->close();
@@ -203,7 +205,7 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
             int detection_range = stoi(campo_dati_2);
             mot_sensor->modifyData(name, description, id, isSmart, isIndoor, sensibility, detection_range);
         }
-        searchPanel->refresh(sensorList);
+        searchPanel->refresh();
         modifyWindow->close();
     }
     catch(err_maxminTemp){
@@ -222,6 +224,11 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
         messageBox.critical(0,"Error","Sembra che tu abbia inserito dei valori errati!");
     }
     
+}
+
+void ApplicationPanel::refresh(){
+    searchPanel->refresh();
+
 }
 }
 }

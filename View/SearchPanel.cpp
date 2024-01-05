@@ -60,8 +60,8 @@ void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchL
     }
 }
 
-void SearchPanel::refresh(std::vector<AbstractSensor*>& list){
-    sensorList = list;
+void SearchPanel::refresh(){
+    //sensorList = list;
     listWidget->clear();
     for(unsigned int i = 0; i < sensorList.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;

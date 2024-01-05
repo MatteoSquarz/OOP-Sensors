@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "../AbstractSensor.h"
+#include "ApplicationPanel.h"
 
 
 namespace Sensor{
@@ -11,6 +12,7 @@ namespace View{
 class MainWindow: public QMainWindow {
 Q_OBJECT
     std::vector<AbstractSensor*>& sensorList;
+    ApplicationPanel* application;
 public:
     MainWindow(std::vector<AbstractSensor*>& sensorList);
 

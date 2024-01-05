@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "../TemperatureSensor.h"
 #include "ApplicationPanel.h"
 #include <QMenuBar>
 #include <QGridLayout>
@@ -29,13 +30,14 @@ MainWindow::MainWindow(std::vector<AbstractSensor*>& sensorList) : sensorList(se
     connect(open, &QAction::triggered, this, &MainWindow::open);
     //QAction* save = new QAction(QIcon("assets/diskette.png"), "Salva", this);
     //this->menuBar()->addAction(save);
-    ApplicationPanel* sensore = new ApplicationPanel(sensorList);
-    setCentralWidget(sensore);
+    application = new ApplicationPanel(sensorList);
+    setCentralWidget(application);
 
 
 }
 
 void MainWindow::open(void){
+    /*
     QString filename= QFileDialog::getOpenFileName(this, "Choose File");
     if(filename.isEmpty())
         return;
@@ -46,8 +48,12 @@ void MainWindow::open(void){
     QString fileContent;
     fileContent = in.readAll();
     file.close();
+    */
     //ui->textEdit->clear();
     //ui->textEdit->setPlainText(fileContent);
+    TemperatureSensor* prova = new TemperatureSensor("ciao", "1dsfdgsgsdfsdsdsdsdfsfsfsdsd22", "424342", true, true, 10, 20);
+    sensorList.push_back(prova);
+    application->refresh();
 }
 
 }
