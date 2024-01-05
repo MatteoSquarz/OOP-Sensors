@@ -35,9 +35,9 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
 
 void ApplicationPanel::changeSensor(QListWidgetItem* item){
     std::string nameSensor = (item->text()).toStdString();
-    for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
-        if((*it)->getName() == nameSensor)
-            sensorPanel->refresh(*it);
+    for(std::vector<AbstractSensor*>::const_iterator cit = sensorList.begin(); cit != sensorList.end(); ++cit){ 
+        if((*cit)->getName() == nameSensor)
+            sensorPanel->refresh(*cit);
     }
 
 }
@@ -45,9 +45,9 @@ void ApplicationPanel::changeSensor(QListWidgetItem* item){
 void ApplicationPanel::searchList(){
     std::string search_target = searchPanel->returnSearchTextBox();
     std::vector<AbstractSensor*> sensorSearchList;
-    for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
-        if(((*it)->getName()).find(search_target) != std::string::npos)    //cerca substring
-            sensorSearchList.push_back(*it);
+    for(std::vector<AbstractSensor*>::const_iterator cit = sensorList.begin(); cit != sensorList.end(); ++cit){  
+        if(((*cit)->getName()).find(search_target) != std::string::npos)    //cerca substring
+            sensorSearchList.push_back(*cit);
     }
     searchPanel->refreshSearch(sensorSearchList);
     
@@ -81,7 +81,7 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
     std::string tipo_sensore = data[0];
     std::string name = data[1];
     std::string id = data[2];
-    std::string description = data[3];
+    std::string brand = data[3];
     bool isSmart;
     data[4] == "Si" ? isSmart = true : isSmart = false;
     bool isIndoor;
@@ -101,18 +101,18 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
         if(tipo_sensore == "Temperatura"){
             int min_Temperature = stoi(campo_dati_1);
             int max_Temperature = stoi(campo_dati_2);
-            new_sensor = new TemperatureSensor(name, description, id, isSmart, isIndoor, min_Temperature, max_Temperature);
+            new_sensor = new TemperatureSensor(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
 
         }
         else if(tipo_sensore == "Movimento"){
             int sensibility = stoi(campo_dati_1);
             int detection_range = stoi(campo_dati_2);
-            new_sensor = new MotionSensor(name, description, id, isSmart, isIndoor, sensibility, detection_range);
+            new_sensor = new MotionSensor(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
         }
         else if(tipo_sensore == "Luminosità"){
             int min_Luminosity = stoi(campo_dati_1);
             int max_Luminosity = stoi(campo_dati_2);
-            new_sensor = new LuminositySensor(name, description, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
+            new_sensor = new LuminositySensor(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
         }
         sensorList.push_back(new_sensor);
         searchPanel->refresh();
@@ -162,7 +162,7 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
     AbstractSensor* sensorToModify = sensorPanel->getCurrentSensor();
     std::string name = data[0];
     std::string id = data[1];
-    std::string description = data[2];
+    std::string brand = data[2];
     bool isSmart;
     data[3] == "Si" ? isSmart = true : isSmart = false;
     bool isIndoor;
@@ -184,19 +184,19 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
         if(temp_sensor){
             int min_Temperature = stoi(campo_dati_1);
             int max_Temperature = stoi(campo_dati_2);
-            temp_sensor->modifyData(name, description, id, isSmart, isIndoor, min_Temperature, max_Temperature);
+            temp_sensor->modifyData(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
         }
         LuminositySensor* lum_sensor = dynamic_cast<LuminositySensor*>(sensorToModify);
         if(lum_sensor){
             int min_Luminosity = stoi(campo_dati_1);
             int max_Luminosity = stoi(campo_dati_2);
-            lum_sensor->modifyData(name, description, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
+            lum_sensor->modifyData(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
         }
         MotionSensor* mot_sensor = dynamic_cast<MotionSensor*>(sensorToModify);
         if(mot_sensor){
             int sensibility = stoi(campo_dati_1);
             int detection_range = stoi(campo_dati_2);
-            mot_sensor->modifyData(name, description, id, isSmart, isIndoor, sensibility, detection_range);
+            mot_sensor->modifyData(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
         }
         searchPanel->refresh();
         modifyWindow->close();

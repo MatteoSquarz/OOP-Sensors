@@ -34,11 +34,11 @@ ModifyWindow::ModifyWindow(AbstractSensor* sensor): sensor(sensor){
     id_text_box = new QLineEdit();
     id_text_box->setText(QString::fromStdString(sensor->getID()));
     layout->addWidget(id_text_box);
-    QLabel* description_label = new QLabel();
-    layout->addWidget(description_label);
-    description_text_box = new QLineEdit();
-    description_text_box->setText(QString::fromStdString(sensor->getDescription()));
-    layout->addWidget(description_text_box);
+    QLabel* brand_label = new QLabel();
+    layout->addWidget(brand_label);
+    brand_text_box = new QLineEdit();
+    brand_text_box->setText(QString::fromStdString(sensor->getBrand()));
+    layout->addWidget(brand_text_box);
     QLabel* is_smart_label = new QLabel();
     layout->addWidget(is_smart_label);
     isSmart_combo_box = new QComboBox();
@@ -56,7 +56,7 @@ ModifyWindow::ModifyWindow(AbstractSensor* sensor): sensor(sensor){
     typeSensor_label->setText("Tipo sensore:");
     name_label->setText("Nome:");
     id_label->setText("ID:");
-    description_label->setText("Descrizione:");
+    brand_label->setText("Brand:");
     is_indoor_label->setText("Sensore Indoor/Outdoor");
     is_smart_label->setText("Supporta SmartApp Si/No");
     
@@ -87,7 +87,7 @@ ModifyWindow::ModifyWindow(AbstractSensor* sensor): sensor(sensor){
 
 
 void ModifyWindow::retrieveData(){
-    if(name_text_box->text().toStdString() == "" || id_text_box->text().toStdString() == "" || description_text_box->text().toStdString() == "" ||
+    if(name_text_box->text().toStdString() == "" || id_text_box->text().toStdString() == "" || brand_text_box->text().toStdString() == "" ||
         campo_specifico_1->text().toStdString() == "" || campo_specifico_2->text().toStdString() == ""){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","Attenzione inserire tutti i campi!");
@@ -98,7 +98,7 @@ void ModifyWindow::retrieveData(){
         //data.push_back(tipo_sensore_combo_box->currentText().toStdString());
         data.push_back(name_text_box->text().toStdString());
         data.push_back(id_text_box->text().toStdString());
-        data.push_back(description_text_box->text().toStdString());
+        data.push_back(brand_text_box->text().toStdString());
         data.push_back(isSmart_combo_box->currentText().toStdString());
         data.push_back(isIndoor_combo_box->currentText().toStdString());
         data.push_back(campo_specifico_1->text().toStdString());

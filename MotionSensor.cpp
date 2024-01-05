@@ -3,8 +3,8 @@
 
 namespace Sensor{
 
-MotionSensor::MotionSensor(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor, const int sens, const int det_range):
-    AbstractSensor(name, description, id, isSmart, isIndoor) {
+MotionSensor::MotionSensor(const std::string name, const std::string brand, const std::string id, const bool isSmart, const bool isIndoor, const int sens, const int det_range):
+    AbstractSensor(name, brand, id, isSmart, isIndoor) {
     if(sens < 0 || det_range < 0) throw err_negativeValue();
     else{
         sensibility = sens;
@@ -20,8 +20,8 @@ MotionSensor::MotionSensor(){
     detectionRange = 0;
 }
 
-void MotionSensor::modifyData(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor, const int sens, const int det_range){
-    AbstractSensor::modifyData(name, description, id, isSmart, isIndoor);
+void MotionSensor::modifyData(const std::string name, const std::string brand, const std::string id, const bool isSmart, const bool isIndoor, const int sens, const int det_range){
+    AbstractSensor::modifyData(name, brand, id, isSmart, isIndoor);
     if(sens < 0 || det_range < 0) throw err_negativeValue();
     else{
         sensibility = sens;

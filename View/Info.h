@@ -16,7 +16,7 @@ private:
     QLabel* artwork;
     QLabel* type_sensor_label;
     QLabel* name_label;
-    QLabel* description_label;
+    QLabel* brand_label;
     QLabel* id_label;
     QLabel* is_smart_label;
     QLabel* is_indoor_label;

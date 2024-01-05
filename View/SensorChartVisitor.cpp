@@ -21,7 +21,6 @@ QChartView* SensorChartVisitor::getChartView() {
 
 void SensorChartVisitor::visitLuminositySensor(LuminositySensor& lum_sensor) {
     QLineSeries* series = new QLineSeries();
-    //std::vector<int> values = lum_sensor.generateRandomHistory(lum_sensor.getMinLuminosity(), lum_sensor.getMaxLuminosity());
     std::vector<int> values = lum_sensor.getHistory();
     for(unsigned int i = 0; i < values.size(); ++i){
         series->append(i, values[i]);
@@ -76,7 +75,6 @@ void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
 
 void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
     QBarSeries* series = new QBarSeries();
-    //std::vector<int> values = motion_sensor.generateRandomHistory(0, 100);
     std::vector<int> values = motion_sensor.getHistory();
     QStringList categories;
     QBarSet* set = new QBarSet("movimenti");
@@ -109,7 +107,6 @@ void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
 
 void SensorChartVisitor::visitTemperatureSensor(TemperatureSensor& temp_sensor) {
     QLineSeries* series = new QLineSeries();
-    //std::vector<int> values = temp_sensor.generateRandomHistory(temp_sensor.getMinTemperature(), temp_sensor.getMaxTemperature());
     std::vector<int> values = temp_sensor.getHistory();
     for(unsigned int i = 0; i < values.size(); ++i){
         series->append(i, values[i]);

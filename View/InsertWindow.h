@@ -16,7 +16,7 @@ Q_OBJECT
 private:
     QLineEdit* name_text_box;
     QLineEdit* id_text_box;
-    QLineEdit* description_text_box;
+    QLineEdit* brand_text_box;
     QLineEdit* campo_specifico_1;
     QLineEdit* campo_specifico_2;
     QComboBox* isIndoor_combo_box;

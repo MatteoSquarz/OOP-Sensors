@@ -11,7 +11,7 @@ namespace Sensor{
 class AbstractSensor{
 private:
     std::string name;
-    std::string description;
+    std::string brand;
     std::string ID;
     bool smartApp;
     bool indoor;
@@ -22,7 +22,7 @@ public:
     AbstractSensor(const std::string, const std::string, const std::string, const bool, const bool);
     AbstractSensor();
     const std::string& getName() const;
-    const std::string& getDescription() const;
+    const std::string& getBrand() const;
     const std::string& getID() const;
     const std::vector<int>& getHistory() const;
     bool isSmart() const;

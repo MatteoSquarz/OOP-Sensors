@@ -1,8 +1,8 @@
 #include "LuminositySensor.h"
 
 namespace Sensor{
-LuminositySensor::LuminositySensor(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor, const int minLum, const int maxLum):
-    AbstractSensor(name, description, id, isSmart, isIndoor){
+LuminositySensor::LuminositySensor(const std::string name, const std::string brand, const std::string id, const bool isSmart, const bool isIndoor, const int minLum, const int maxLum):
+    AbstractSensor(name, brand, id, isSmart, isIndoor){
 
     if(minLum >= maxLum) throw err_maxminLum();
     else if(minLum < 0) throw err_minUnderZero();
@@ -12,8 +12,8 @@ LuminositySensor::LuminositySensor(const std::string name, const std::string des
     }
 }
 
-void LuminositySensor::modifyData(const std::string name, const std::string description, const std::string id, const bool isSmart, const bool isIndoor, const int minLum, const int maxLum){
-    AbstractSensor::modifyData(name, description, id, isSmart, isIndoor);
+void LuminositySensor::modifyData(const std::string name, const std::string brand, const std::string id, const bool isSmart, const bool isIndoor, const int minLum, const int maxLum){
+    AbstractSensor::modifyData(name, brand, id, isSmart, isIndoor);
     if(minLum >= maxLum) throw err_maxminLum();
     else if(minLum < 0) throw err_minUnderZero();
     else{
