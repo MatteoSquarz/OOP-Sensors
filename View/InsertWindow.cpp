@@ -10,6 +10,7 @@ namespace Sensor{
 namespace View{
 
 InsertWindow::InsertWindow() {
+    this->setModal(true);
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
     QLabel* typeSensor_label = new QLabel();
