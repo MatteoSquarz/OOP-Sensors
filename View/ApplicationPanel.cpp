@@ -18,16 +18,13 @@ namespace View {
 
 ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
     QHBoxLayout* layout = new QHBoxLayout(this);
-    //layout->setAlignment(Qt::AlignRight | Qt::AlignTop);
     searchPanel = new SearchPanel(sensorList);
     layout->addWidget(searchPanel);
     searchPanel->setFixedWidth(200);
-    //std::vector<AbstractSensor*> lista = sensorList.getList();
     MotionSensor esempio = MotionSensor();
     sensorPanel = new SensorPanel(&esempio);
-    //searchPanel->setFixedSize(200,500);
     layout->addWidget(sensorPanel); 
-    connect(searchPanel, &SearchPanel::itemClicked, this, &ApplicationPanel::changeSensor);
+    connect(searchPanel, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(changeSensor(QListWidgetItem*)));
     connect(searchPanel, &SearchPanel::search, this, &ApplicationPanel::searchList);
     connect(searchPanel, &SearchPanel::clearSearch, this, &ApplicationPanel::clearSearchList);
     connect(searchPanel, &SearchPanel::addSensor, this, &ApplicationPanel::addSensorWindow);
@@ -36,8 +33,8 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
     sensorPanel->setDisabled(true);
 }
 
-void ApplicationPanel::changeSensor(){
-    std::string nameSensor = searchPanel->returnTextList();
+void ApplicationPanel::changeSensor(QListWidgetItem* item){
+    std::string nameSensor = (item->text()).toStdString();
     for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
         if((*it)->getName() == nameSensor)
             sensorPanel->refresh(*it);
@@ -47,7 +44,6 @@ void ApplicationPanel::changeSensor(){
 
 void ApplicationPanel::searchList(){
     std::string search_target = searchPanel->returnSearchTextBox();
-    
     std::vector<AbstractSensor*> sensorSearchList;
     for(std::vector<AbstractSensor*>::iterator it = sensorList.begin(); it != sensorList.end(); ++it){
         if(((*it)->getName()).find(search_target) != std::string::npos)    //cerca substring
@@ -63,7 +59,6 @@ void ApplicationPanel::clearSearchList(){
 
 void ApplicationPanel::deleteSensorFromList(){
     AbstractSensor* sensorToDelete = sensorPanel->getCurrentSensor();
-    std::cout << sensorToDelete->getName();
     sensorList.erase(std::remove(sensorList.begin(), sensorList.end(), sensorToDelete), sensorList.end());
     delete sensorToDelete;
     searchPanel->refresh();
@@ -80,8 +75,6 @@ void ApplicationPanel::addSensorWindow(){
     insertWindow = new InsertWindow();
     connect(insertWindow, SIGNAL(addSensor(std::vector<std::string>)), this, SLOT(addSensorToList(std::vector<std::string>)));
     insertWindow->show();
-    //insertWindow->setFocus();
-    //this->setDisabled(true);
 }
 
 void ApplicationPanel::addSensorToList(std::vector<std::string> data){
@@ -228,7 +221,6 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
 
 void ApplicationPanel::refresh(){
     searchPanel->refresh();
-
 }
 }
 }

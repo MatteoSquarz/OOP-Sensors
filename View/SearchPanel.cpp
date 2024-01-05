@@ -41,7 +41,6 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
     layout->addWidget(add_sensor);
     connect(add_sensor, &QPushButton::pressed, this, &SearchPanel::addSensor);
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SIGNAL(itemClicked(QListWidgetItem*)));
-    //connect(this, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(returnIndex()));
 }
 
 
@@ -61,7 +60,6 @@ void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchL
 }
 
 void SearchPanel::refresh(){
-    //sensorList = list;
     listWidget->clear();
     for(unsigned int i = 0; i < sensorList.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;
@@ -69,10 +67,6 @@ void SearchPanel::refresh(){
         listWidget->insertItem(i, newItem);
     }
     search_text_box->setText("");
-}
-
-std::string SearchPanel::returnTextList() const{
-    return (listWidget->currentItem()->text()).toStdString();
 }
 
 std::string SearchPanel::returnSearchTextBox() const{

@@ -11,6 +11,7 @@ namespace View{
 
 InsertWindow::InsertWindow() {
     this->setModal(true);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
     QLabel* typeSensor_label = new QLabel();

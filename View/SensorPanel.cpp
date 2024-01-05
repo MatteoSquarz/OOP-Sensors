@@ -22,6 +22,7 @@ SensorPanel::SensorPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidg
     layout->addWidget(chartPanel);
     connect(chartPanel, &ChartPanel::simulation, this, &SensorPanel::generateSimulation);
     connect(infoPanel, &InfoPanel::deleteSensor, this, &SensorPanel::deleteSensor);
+    //connect(infoPanel, SIGNAL(deleteSensor()), this, SIGNAL(deleteSensor(sensor)));
     connect(infoPanel, &InfoPanel::modifySensor, this, &SensorPanel::modifySensor);
 }
 

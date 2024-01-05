@@ -15,6 +15,7 @@ namespace View {
 
 ModifyWindow::ModifyWindow(AbstractSensor* sensor): sensor(sensor){
     this->setModal(true);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 

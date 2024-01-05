@@ -17,13 +17,12 @@ private:
     std::vector<AbstractSensor*>& sensorList;
     InsertWindow* insertWindow;
     ModifyWindow* modifyWindow;
-    //std::vector<AbstractSensor*>& sensorSearchList;
     bool checkNameExistence(std::string) const;
 public:
     ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
     void refresh();
 public slots:
-    void changeSensor();
+    void changeSensor(QListWidgetItem*);
     void searchList();
     void clearSearchList();
     void deleteSensorFromList();
