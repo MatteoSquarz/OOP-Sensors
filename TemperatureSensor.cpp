@@ -12,7 +12,7 @@ TemperatureSensor::TemperatureSensor(const std::string name, const std::string b
         min_Temperature = minTemp;
         max_Temperature = maxTemp;
     }
-
+    
 } 
 
 TemperatureSensor::TemperatureSensor(){}

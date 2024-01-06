@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "../AbstractSensor.h"
 #include "ApplicationPanel.h"
-
+#include "../Json/JsonFile.h"
 
 namespace Sensor{
 namespace View{
@@ -18,6 +18,7 @@ public:
 
 public slots:
     void open(void);
+    void save(void);
 };
 
 }

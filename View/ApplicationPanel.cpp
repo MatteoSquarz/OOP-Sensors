@@ -221,6 +221,17 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
 
 void ApplicationPanel::refresh(){
     searchPanel->refresh();
+    if(sensorList.empty()){
+        sensorPanel->setDisabled(true);
+        MotionSensor esempio = MotionSensor();
+        sensorPanel->refresh(&esempio);
+    }
+    else{
+        sensorPanel->setDisabled(false);
+        sensorPanel->refresh(sensorList[0]);
+    }
+
+
 }
 }
 }

@@ -67,6 +67,7 @@
         "qdatetimeaxis": "cpp",
         "qpushbutton": "cpp",
         "qmainwindow": "cpp",
-        "qlabel": "cpp"
+        "qlabel": "cpp",
+        "qjsonarray": "cpp"
     }
 }
