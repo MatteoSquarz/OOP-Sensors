@@ -68,6 +68,7 @@
         "qpushbutton": "cpp",
         "qmainwindow": "cpp",
         "qlabel": "cpp",
-        "qjsonarray": "cpp"
+        "qjsonarray": "cpp",
+        "qgridlayout": "cpp"
     }
 }

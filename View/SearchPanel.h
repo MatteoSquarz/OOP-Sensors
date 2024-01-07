@@ -12,12 +12,11 @@ class SearchPanel : public QWidget{
 Q_OBJECT
 private:
     std::vector<AbstractSensor*>& sensorList;
-    //AbstractSensor* sensorSearched;
     QListWidget* listWidget;
     QLineEdit* search_text_box;
 public:
-    SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent =0);
-    void refreshSearch(const std::vector<AbstractSensor*> sensorSearchList);
+    SearchPanel(std::vector<AbstractSensor*>&, QWidget* =0);
+    void refreshSearch(const std::vector<AbstractSensor*>);
     void refresh();
     std::string returnSearchTextBox() const;
 signals:
@@ -25,9 +24,6 @@ signals:
     void search();
     void clearSearch();
     void addSensor();
-public slots:
-    
-
 
 };   
 

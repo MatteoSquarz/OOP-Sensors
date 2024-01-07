@@ -3,9 +3,6 @@
 #include <QVBoxLayout>
 #include <QChartView>
 #include <QPushButton>
-#include <QLineSeries>
-#include <QDateTimeAxis>
-#include <QValueAxis>
 #include "SensorChartVisitor.h"
 #include <iostream>
 namespace Sensor {

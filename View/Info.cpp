@@ -1,9 +1,8 @@
 #include "Info.h"
-#include <QVBoxLayout>
+#include <QGridLayout>
 #include <QString>
 #include "SensorInfoVisitor.h"
 #include <iostream>
-#include "../TemperatureSensor.h"
 namespace Sensor{
 namespace View {
 

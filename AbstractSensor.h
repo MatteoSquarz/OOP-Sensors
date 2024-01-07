@@ -15,8 +15,8 @@ private:
     std::string ID;
     bool smartApp;
     bool indoor;
-    std::vector<int> history;
 protected:
+    std::vector<int> history;
     std::vector<SensorObserverInterface*> observers;
 public:
     AbstractSensor(const std::string, const std::string, const std::string, const bool, const bool);
@@ -29,9 +29,9 @@ public:
     bool isIndoor() const;
 
     virtual ~AbstractSensor() = default;
-    virtual void accept(SensorVisitorInterface& visitor) = 0;
-    void registerObserver(SensorObserverInterface* observer);
-    void generateRandomHistory(int, int);
+    virtual void accept(SensorVisitorInterface&) = 0;
+    void registerObserver(SensorObserverInterface*);
+    virtual void generateRandomHistory() =0;
     void modifyData(const std::string, const std::string, const std::string, const bool, const bool);
     bool operator== (const AbstractSensor& s);
 };

@@ -13,8 +13,8 @@ private:
     std::string path;
 
 public:
-    JsonFile(const std::string& path);
-    void save(const std::vector<AbstractSensor*> items);
+    JsonFile(const std::string&);
+    void save(const std::vector<AbstractSensor*>);
     std::vector<AbstractSensor*> open(void);
 };
 

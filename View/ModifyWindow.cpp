@@ -7,7 +7,6 @@
 #include <QString>
 #include <QPushButton>
 #include <iostream>
-#include <sstream>
 
 
 namespace Sensor {
@@ -95,7 +94,6 @@ void ModifyWindow::retrieveData(){
     }
     else{
         std::vector<std::string> data;
-        //data.push_back(tipo_sensore_combo_box->currentText().toStdString());
         data.push_back(name_text_box->text().toStdString());
         data.push_back(id_text_box->text().toStdString());
         data.push_back(brand_text_box->text().toStdString());

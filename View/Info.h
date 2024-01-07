@@ -23,10 +23,10 @@ private:
     QLabel* campi_dati_1;
     QLabel* campi_dati_2;
 public:
-    Info(AbstractSensor* sensor, QWidget* parent = 0);
-    void show(AbstractSensor* sensor);
+    Info(AbstractSensor*, QWidget* = 0);
+    void show(AbstractSensor*);
 
-    void notify(AbstractSensor* sensor) override;
+    void notify(AbstractSensor*) override;
 };
 
 }

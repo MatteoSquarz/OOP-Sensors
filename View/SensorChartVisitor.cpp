@@ -6,7 +6,6 @@
 #include <QBarSeries>
 #include <QBarSet>
 #include <QBarCategoryAxis>
-#include <QDateTimeAxis>
 #include <QValueAxis>
 #include "../TemperatureSensor.h"
 #include "../MotionSensor.h"
@@ -44,34 +43,6 @@ void SensorChartVisitor::visitLuminositySensor(LuminositySensor& lum_sensor) {
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 }
-/*
-void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
-    QLineSeries* series = new QLineSeries();
-    //std::vector<int> values = motion_sensor.generateRandomHistory(0, 100);
-    std::vector<int> values = motion_sensor.getHistory();
-    for(unsigned int i = 0; i < values.size(); ++i){
-        series->append(i, values[i]);
-    }
-    QChart* chart = new QChart();
-    chart->legend()->hide();
-    chart->addSeries(series);
-    chart->setTitle("Simulazione Rilevamento Movimenti");
-    QValueAxis *axisX = new QValueAxis;
-    axisX->setTickCount(24);
-    axisX->setLabelFormat("%.2f");
-    axisX->setTitleText("Ore");
-    chart->addAxis(axisX, Qt::AlignBottom);
-    series->attachAxis(axisX);
-
-    QValueAxis *axisY = new QValueAxis;
-    axisY->setLabelFormat("%i");
-    axisY->setTitleText("N° rilevamenti");
-    chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisY);
-    chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
-}
-*/
 
 void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
     QBarSeries* series = new QBarSeries();

@@ -13,7 +13,6 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
     QVBoxLayout* layout = new QVBoxLayout(this);
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
-
     search_text_box = new QLineEdit();
     commands->addWidget(search_text_box, 0, 0);
     QPushButton* search = new QPushButton("");

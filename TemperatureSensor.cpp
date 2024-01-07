@@ -17,6 +17,17 @@ TemperatureSensor::TemperatureSensor(const std::string name, const std::string b
 
 TemperatureSensor::TemperatureSensor(){}
 
+void TemperatureSensor::generateRandomHistory(){
+	history.clear();
+	srand((unsigned) time(NULL));
+	for(int i=1; i<=24; i++){
+		int random = min_Temperature + (rand() % ((max_Temperature-min_Temperature)+1));
+        history.push_back(random);
+	}
+	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
+        (*observer)->notify(this);
+    }
+}
 
 void TemperatureSensor::modifyData(const std::string name, const std::string brand, const std::string id, const bool isSmart, const bool isIndoor, const int minTemp, const int maxTemp){
     AbstractSensor::modifyData(name, brand, id, isSmart, isIndoor);

@@ -1,15 +1,9 @@
 #include "MainWindow.h"
 #include "../Json/JsonFile.h"
-#include "../TemperatureSensor.h"
 #include "ApplicationPanel.h"
-#include <QMenuBar>
-#include <QGridLayout>
-#include <QMenu>
 #include <QApplication>
-#include <QFile>
 #include <QFileDialog>
 #include <QToolBar>
-#include <QTextStream>
 #include <iostream>
 namespace Sensor{
 namespace View{
@@ -25,17 +19,10 @@ MainWindow::MainWindow(std::vector<AbstractSensor*>& sensorList) : sensorList(se
     toolBar->setFixedHeight(30);
     toolBar->setMovable(false);
     this->addToolBar(toolBar);
-    //open->setText("Apri");
-    //this->menuBar()->addAction(open);
-    //connect(open, &QAction::triggered, [this](bool checked){open();});
     connect(open, &QAction::triggered, this, &MainWindow::open);
     connect(save, &QAction::triggered, this, &MainWindow::save);
-    //QAction* save = new QAction(QIcon("assets/diskette.png"), "Salva", this);
-    //this->menuBar()->addAction(save);
     application = new ApplicationPanel(sensorList);
     setCentralWidget(application);
-
-
 }
 
 void MainWindow::open(void){
@@ -52,8 +39,6 @@ void MainWindow::open(void){
         for(std::vector<AbstractSensor*>::const_iterator cit = items.begin(); cit != items.end(); ++cit){
             sensorList.push_back(*cit);
         }
-        
-        
     }
     application->refresh();
 }

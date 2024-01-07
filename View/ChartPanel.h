@@ -17,9 +17,9 @@ signals:
     void simulation();
 
 public:
-    ChartPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
-    void notify(Sensor::AbstractSensor* sensor) override;
-    void refresh(Sensor::AbstractSensor* sensor);
+    ChartPanel(Sensor::AbstractSensor*, QWidget* =0);
+    void notify(Sensor::AbstractSensor*) override;
+    void refresh(Sensor::AbstractSensor*);
 };   
 
 

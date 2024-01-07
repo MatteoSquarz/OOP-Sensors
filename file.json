@@ -1,0 +1,122 @@
+[
+    {
+        "brand": "dgsgsdfsdsdsdsdfsfsfsdsd22",
+        "id": "53324",
+        "isIndoor": true,
+        "isSmart": false,
+        "maxTemperature": 51,
+        "minTemperature": 41,
+        "name": "temp",
+        "type": "temperature"
+    },
+    {
+        "brand": "rr",
+        "detectionRange": 8,
+        "id": "11111",
+        "isIndoor": false,
+        "isSmart": false,
+        "name": "prova2",
+        "sensibility": 4,
+        "type": "motion"
+    },
+    {
+        "brand": "rrr",
+        "id": "33",
+        "isIndoor": false,
+        "isSmart": true,
+        "maxLuminosity": 111,
+        "minLuminosity": 1,
+        "name": "gg",
+        "type": "luminosity"
+    },
+    {
+        "brand": "we",
+        "id": "12",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxTemperature": 20,
+        "minTemperature": -20,
+        "name": "tre",
+        "type": "temperature"
+    },
+    {
+        "brand": "ww",
+        "id": "21",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxTemperature": 11,
+        "minTemperature": 1,
+        "name": "cioa",
+        "type": "temperature"
+    },
+    {
+        "brand": "re",
+        "id": "21",
+        "isIndoor": false,
+        "isSmart": true,
+        "maxLuminosity": 110,
+        "minLuminosity": 1,
+        "name": "ff",
+        "type": "luminosity"
+    },
+    {
+        "brand": "yt",
+        "detectionRange": 70,
+        "id": "21",
+        "isIndoor": true,
+        "isSmart": false,
+        "name": "we",
+        "sensibility": 5,
+        "type": "motion"
+    },
+    {
+        "brand": "ui",
+        "id": "45",
+        "isIndoor": false,
+        "isSmart": false,
+        "maxTemperature": 34,
+        "minTemperature": 8,
+        "name": "yt",
+        "type": "temperature"
+    },
+    {
+        "brand": "hjg",
+        "id": "43",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxLuminosity": 88,
+        "minLuminosity": 4,
+        "name": "marcio",
+        "type": "luminosity"
+    },
+    {
+        "brand": "gfd",
+        "detectionRange": 57,
+        "id": "32",
+        "isIndoor": false,
+        "isSmart": true,
+        "name": "por",
+        "sensibility": 2,
+        "type": "motion"
+    },
+    {
+        "brand": "tr",
+        "id": "234",
+        "isIndoor": false,
+        "isSmart": false,
+        "maxLuminosity": 333,
+        "minLuminosity": 3,
+        "name": "qw",
+        "type": "luminosity"
+    },
+    {
+        "brand": "3",
+        "id": "32",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxTemperature": 111,
+        "minTemperature": 1,
+        "name": "qw1",
+        "type": "temperature"
+    }
+]

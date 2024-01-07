@@ -30,7 +30,17 @@ LuminositySensor::LuminositySensor(){}
 int LuminositySensor::getMinLuminosity() const{ return min_Luminosity;}
 int LuminositySensor::getMaxLuminosity() const{ return max_Luminosity;}
 
-
+void LuminositySensor::generateRandomHistory(){
+	history.clear();
+	srand((unsigned) time(NULL));
+	for(int i=1; i<=24; i++){
+		int random = min_Luminosity + (rand() % ((max_Luminosity-min_Luminosity)+1));
+        history.push_back(random);
+	}
+	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
+        (*observer)->notify(this);
+    }
+}
 
 
 void LuminositySensor::accept(SensorVisitorInterface& visitor) {

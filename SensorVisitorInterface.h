@@ -10,9 +10,9 @@ class LuminositySensor;
 class SensorVisitorInterface {
   public:
     virtual ~SensorVisitorInterface() = default;
-    virtual void visitMotionSensor(MotionSensor& motion) = 0;
-    virtual void visitTemperatureSensor(TemperatureSensor& temperature) = 0;
-    virtual void visitLuminositySensor(LuminositySensor& luminosity) = 0;
+    virtual void visitMotionSensor(MotionSensor&) = 0;
+    virtual void visitTemperatureSensor(TemperatureSensor&) = 0;
+    virtual void visitLuminositySensor(LuminositySensor&) = 0;
 };
 
 }

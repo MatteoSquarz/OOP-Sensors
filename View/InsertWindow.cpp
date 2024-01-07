@@ -4,7 +4,6 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QApplication>
-#include <QTextStream>
 #include <iostream>
 namespace Sensor{
 namespace View{

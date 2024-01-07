@@ -14,7 +14,7 @@ private:
     ChartPanel* chartPanel;
     Sensor::AbstractSensor* sensor;
 public:
-    SensorPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
+    SensorPanel(Sensor::AbstractSensor*, QWidget* =0);
     void refresh(Sensor::AbstractSensor*);
     AbstractSensor* getCurrentSensor() const;
 signals:

@@ -11,7 +11,7 @@ private:
     Info* info;
     Sensor::AbstractSensor* sensor;
 public:
-    InfoPanel(Sensor::AbstractSensor* sensor, QWidget* parent =0);
+    InfoPanel(Sensor::AbstractSensor*, QWidget* =0);
     void refresh(Sensor::AbstractSensor*);
 signals:
     void modifySensor();

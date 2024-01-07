@@ -21,23 +21,8 @@ void AbstractSensor::modifyData(const std::string n, const std::string br, const
 	indoor = isIndoor;
 }
 
-
-
 void AbstractSensor::registerObserver(SensorObserverInterface* observer) {
     observers.push_back(observer);
-}
-
-
-void AbstractSensor::generateRandomHistory(int minValue, int maxValue){
-	history.clear();
-	srand((unsigned) time(NULL));
-	for(int i=1; i<=24; i++){
-		int random = minValue + (rand() % ((maxValue-minValue)+1));
-        history.push_back(random);
-	}
-	for (auto observer = observers.begin(); observer != observers.end(); observer++) {
-        (*observer)->notify(this);
-    }
 }
 
 bool AbstractSensor::operator== (const AbstractSensor& s){

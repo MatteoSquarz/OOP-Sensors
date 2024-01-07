@@ -2,14 +2,12 @@
 #include "../TemperatureSensor.h"
 #include "../LuminositySensor.h"
 #include "../MotionSensor.h"
-#include "InsertWindow.h"
 #include "ModifyWindow.h"
 #include "ApplicationPanel.h"
 #include "InsertWindow.h"
 #include "SensorPanel.h"
 #include "SearchPanel.h"
 #include <QHBoxLayout>
-#include <QPushButton>
 #include <QMessageBox>
 #include <iostream>
 #include <string>

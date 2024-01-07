@@ -14,8 +14,9 @@ public:
     MotionSensor(const std::string, const std::string, const std::string, const bool, const bool, const int, const int);
     unsigned int getSensibility() const;
     unsigned int getDetectionRange() const;
+    void generateRandomHistory() override;
     void modifyData(const std::string, const std::string, const std::string, const bool, const bool, const int, const int);
-    void accept(SensorVisitorInterface& visitor) override;
+    void accept(SensorVisitorInterface&) override;
     ~MotionSensor(){}
 };
 

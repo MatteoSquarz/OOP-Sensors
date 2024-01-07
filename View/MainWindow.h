@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "../AbstractSensor.h"
 #include "ApplicationPanel.h"
-#include "../Json/JsonFile.h"
+
 
 namespace Sensor{
 namespace View{
@@ -14,7 +14,7 @@ Q_OBJECT
     std::vector<AbstractSensor*>& sensorList;
     ApplicationPanel* application;
 public:
-    MainWindow(std::vector<AbstractSensor*>& sensorList);
+    MainWindow(std::vector<AbstractSensor*>&);
 
 public slots:
     void open(void);
