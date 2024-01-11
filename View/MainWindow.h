@@ -4,17 +4,17 @@
 #include <QMainWindow>
 #include "../AbstractSensor.h"
 #include "ApplicationPanel.h"
-
+#include "../SensorContainer.h"
 
 namespace Sensor{
 namespace View{
 
 class MainWindow: public QMainWindow {
 Q_OBJECT
-    std::vector<AbstractSensor*>& sensorList;
+    SensorContainer& sensorList;
     ApplicationPanel* application;
 public:
-    MainWindow(std::vector<AbstractSensor*>&);
+    MainWindow(SensorContainer&);
 
 public slots:
     void open(void);

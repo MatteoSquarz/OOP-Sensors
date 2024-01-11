@@ -6,6 +6,7 @@
 #include "SearchPanel.h"
 #include "InsertWindow.h"
 #include "ModifyWindow.h"
+#include "../SensorContainer.h"
 namespace Sensor{
 namespace View {
 
@@ -14,12 +15,11 @@ Q_OBJECT
 private:
     SensorPanel* sensorPanel;
     SearchPanel* searchPanel;
-    std::vector<AbstractSensor*>& sensorList;
+    SensorContainer& sensorList;
     InsertWindow* insertWindow;
     ModifyWindow* modifyWindow;
-    bool checkNameExistence(std::string) const;
 public:
-    ApplicationPanel(std::vector<AbstractSensor*>&, QWidget* =0);
+    ApplicationPanel(SensorContainer&, QWidget* =0);
     void refresh();
 public slots:
     void changeSensor(QListWidgetItem*);

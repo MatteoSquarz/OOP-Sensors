@@ -14,7 +14,7 @@
 namespace Sensor {
 namespace View {
 
-ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
+ApplicationPanel::ApplicationPanel(SensorContainer& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
     QHBoxLayout* layout = new QHBoxLayout(this);
     searchPanel = new SearchPanel(sensorList);
     layout->addWidget(searchPanel);
@@ -32,21 +32,14 @@ ApplicationPanel::ApplicationPanel(std::vector<AbstractSensor*>& sensorList, QWi
 }
 
 void ApplicationPanel::changeSensor(QListWidgetItem* item){
-    std::string nameSensor = (item->text()).toStdString();
-    for(std::vector<AbstractSensor*>::const_iterator cit = sensorList.begin(); cit != sensorList.end(); ++cit){ 
-        if((*cit)->getName() == nameSensor)
-            sensorPanel->refresh(*cit);
-    }
+    std::string sensorName = (item->text()).toStdString();
+    sensorPanel->refresh(sensorList.getSensor(sensorName));
 
 }
 
 void ApplicationPanel::searchList(){
     std::string search_target = searchPanel->returnSearchTextBox();
-    std::vector<AbstractSensor*> sensorSearchList;
-    for(std::vector<AbstractSensor*>::const_iterator cit = sensorList.begin(); cit != sensorList.end(); ++cit){  
-        if(((*cit)->getName()).find(search_target) != std::string::npos)    //cerca substring
-            sensorSearchList.push_back(*cit);
-    }
+    std::vector<AbstractSensor*> sensorSearchList = sensorList.searchList(search_target);
     searchPanel->refreshSearch(sensorSearchList);
     
 }
@@ -57,11 +50,10 @@ void ApplicationPanel::clearSearchList(){
 
 void ApplicationPanel::deleteSensorFromList(){
     AbstractSensor* sensorToDelete = sensorPanel->getCurrentSensor();
-    sensorList.erase(std::remove(sensorList.begin(), sensorList.end(), sensorToDelete), sensorList.end());
-    delete sensorToDelete;
+    sensorList.deleteSensor(sensorToDelete);
     searchPanel->refresh();
-    if(!sensorList.empty())
-        sensorPanel->refresh(sensorList[0]);
+    if(!sensorList.isEmpty())
+        sensorPanel->refresh(sensorList.getFirstSensor());
     else{
         sensorPanel->setDisabled(true);
         MotionSensor esempio = MotionSensor();
@@ -76,47 +68,19 @@ void ApplicationPanel::addSensorWindow(){
 }
 
 void ApplicationPanel::addSensorToList(std::vector<std::string> data){
-    std::string tipo_sensore = data[0];
-    std::string name = data[1];
-    std::string id = data[2];
-    std::string brand = data[3];
-    bool isSmart;
-    data[4] == "Si" ? isSmart = true : isSmart = false;
-    bool isIndoor;
-    data[5] == "Indoor" ? isIndoor = true : isIndoor = false;
-    std::string campo_dati_1 = data[6];
-    std::string campo_dati_2 = data[7];
-    if(checkNameExistence(name)){    
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
-        messageBox.setFixedSize(500,200);
-        return;
-    }
+    
     AbstractSensor* new_sensor = nullptr;
     QMessageBox messageBox;
     messageBox.setFixedSize(500,200);
     try{
-        if(tipo_sensore == "Temperatura"){
-            int min_Temperature = stoi(campo_dati_1);
-            int max_Temperature = stoi(campo_dati_2);
-            new_sensor = new TemperatureSensor(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
-
-        }
-        else if(tipo_sensore == "Movimento"){
-            int sensibility = stoi(campo_dati_1);
-            int detection_range = stoi(campo_dati_2);
-            new_sensor = new MotionSensor(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
-        }
-        else if(tipo_sensore == "Luminosità"){
-            int min_Luminosity = stoi(campo_dati_1);
-            int max_Luminosity = stoi(campo_dati_2);
-            new_sensor = new LuminositySensor(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
-        }
-        sensorList.push_back(new_sensor);
+        new_sensor = sensorList.addSensorFromRawData(data);
         searchPanel->refresh();
         sensorPanel->refresh(new_sensor);
         sensorPanel->setDisabled(false);
         insertWindow->close();
+    }
+    catch(nameAlreadyExists){
+        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
     }
     catch(err_maxminTemp){
         messageBox.critical(0,"Error","Temperatura minima maggiore o uguale a quella massima!");
@@ -141,14 +105,6 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
     
 }
 
-bool ApplicationPanel::checkNameExistence(std::string name) const{
-    bool found = false;
-    for(std::vector<AbstractSensor*>::const_iterator cit = sensorList.begin(); cit != sensorList.end() && !found; ++cit){
-        if((*cit)->getName() == name)
-            found = true;
-    }
-    return found;
-}
 
 void ApplicationPanel::modifySensorWindow(){
     modifyWindow = new ModifyWindow(sensorPanel->getCurrentSensor());
@@ -158,46 +114,16 @@ void ApplicationPanel::modifySensorWindow(){
 
 void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
     AbstractSensor* sensorToModify = sensorPanel->getCurrentSensor();
-    std::string name = data[0];
-    std::string id = data[1];
-    std::string brand = data[2];
-    bool isSmart;
-    data[3] == "Si" ? isSmart = true : isSmart = false;
-    bool isIndoor;
-    data[4] == "Indoor" ? isIndoor = true : isIndoor = false;
-    std::string campo_dati_1 = data[5];
-    std::string campo_dati_2 = data[6];
-    if(checkNameExistence(name) && name != sensorToModify->getName()){    
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
-        messageBox.setFixedSize(500,200);
-        return;
-    }
-
     QMessageBox messageBox;
     messageBox.setFixedSize(500,200);
     
     try{
-        TemperatureSensor* temp_sensor = dynamic_cast<TemperatureSensor*>(sensorToModify);
-        if(temp_sensor){
-            int min_Temperature = stoi(campo_dati_1);
-            int max_Temperature = stoi(campo_dati_2);
-            temp_sensor->modifyData(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
-        }
-        LuminositySensor* lum_sensor = dynamic_cast<LuminositySensor*>(sensorToModify);
-        if(lum_sensor){
-            int min_Luminosity = stoi(campo_dati_1);
-            int max_Luminosity = stoi(campo_dati_2);
-            lum_sensor->modifyData(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
-        }
-        MotionSensor* mot_sensor = dynamic_cast<MotionSensor*>(sensorToModify);
-        if(mot_sensor){
-            int sensibility = stoi(campo_dati_1);
-            int detection_range = stoi(campo_dati_2);
-            mot_sensor->modifyData(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
-        }
+        sensorList.modifySensorFromRawData(sensorToModify, data);
         searchPanel->refresh();
         modifyWindow->close();
+    }
+    catch(nameAlreadyExists){
+        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
     }
     catch(err_maxminTemp){
         messageBox.critical(0,"Error","Temperatura minima maggiore o uguale a quella massima!");
@@ -219,14 +145,14 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
 
 void ApplicationPanel::refresh(){
     searchPanel->refresh();
-    if(sensorList.empty()){
+    if(sensorList.isEmpty()){
         sensorPanel->setDisabled(true);
         MotionSensor esempio = MotionSensor();
         sensorPanel->refresh(&esempio);
     }
     else{
         sensorPanel->setDisabled(false);
-        sensorPanel->refresh(sensorList[0]);
+        sensorPanel->refresh(sensorList.getFirstSensor());
     }
 
 

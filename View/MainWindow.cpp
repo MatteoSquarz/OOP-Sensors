@@ -8,7 +8,7 @@
 namespace Sensor{
 namespace View{
 
-MainWindow::MainWindow(std::vector<AbstractSensor*>& sensorList) : sensorList(sensorList){
+MainWindow::MainWindow(SensorContainer& sensorList) : sensorList(sensorList){
     this->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     QToolBar* toolBar = new QToolBar();
     QAction* open = new QAction(QIcon(QPixmap(("assets/folder.png"))), "Apri");
@@ -31,14 +31,9 @@ void MainWindow::open(void){
         return;
     else{
         Json::JsonFile file(path.toStdString());
+        sensorList.clearAllItems();
         std::vector<AbstractSensor*> items = file.open();
-        for(auto sensorToDelete : sensorList){
-            delete sensorToDelete;
-        }
-        sensorList.clear();
-        for(std::vector<AbstractSensor*>::const_iterator cit = items.begin(); cit != items.end(); ++cit){
-            sensorList.push_back(*cit);
-        }
+        sensorList.load(items);
     }
     application->refresh();
 }
@@ -48,7 +43,7 @@ void MainWindow::save(void){
     if(path.isEmpty()) return;
     else{
         Json::JsonFile file(path.toStdString());
-        file.save(sensorList);
+        file.save(sensorList.getSensorsList());
     }
 }
 
