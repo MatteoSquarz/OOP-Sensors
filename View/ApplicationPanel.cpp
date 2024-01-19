@@ -79,8 +79,8 @@ void ApplicationPanel::addSensorToList(std::vector<std::string> data){
         sensorPanel->setDisabled(false);
         insertWindow->close();
     }
-    catch(nameAlreadyExists){
-        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
+    catch(err_nameAlreadyExists){
+        messageBox.critical(0,"Error","Il nome dato al sensore è già utilizzato da un altro sensore esistente!");
     }
     catch(err_maxminTemp){
         messageBox.critical(0,"Error","Temperatura minima maggiore o uguale a quella massima!");
@@ -122,8 +122,8 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
         searchPanel->refresh();
         modifyWindow->close();
     }
-    catch(nameAlreadyExists){
-        messageBox.critical(0,"Error","Il nome dato al sensore e' gia' utilizzato da un altro sensore esistente!");
+    catch(err_nameAlreadyExists){
+        messageBox.critical(0,"Error","Il nome dato al sensore è già utilizzato da un altro sensore esistente!");
     }
     catch(err_maxminTemp){
         messageBox.critical(0,"Error","Temperatura minima maggiore o uguale a quella massima!");

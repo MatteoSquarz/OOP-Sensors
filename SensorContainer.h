@@ -5,7 +5,7 @@
 #include "AbstractSensor.h"
 
 namespace Sensor{
-class nameAlreadyExists{};
+class err_nameAlreadyExists{};
 class SensorContainer{
 private:
     std::vector<AbstractSensor*> sensors;

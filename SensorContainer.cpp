@@ -38,7 +38,7 @@ AbstractSensor* SensorContainer::addSensorFromRawData(const std::vector<std::str
     std::string campo_dati_1 = data[6];
     std::string campo_dati_2 = data[7];
     if(checkNameExistence(name)){    
-        throw nameAlreadyExists();
+        throw err_nameAlreadyExists();
     }
     AbstractSensor* new_sensor = nullptr;
     if(tipo_sensore == "Temperatura"){
@@ -71,7 +71,7 @@ void SensorContainer::modifySensorFromRawData(AbstractSensor* sensorToModify, co
     std::string campo_dati_1 = data[5];
     std::string campo_dati_2 = data[6];
     if(checkNameExistence(name) && name != sensorToModify->getName()){    
-        throw nameAlreadyExists();
+        throw err_nameAlreadyExists();
     }
     
     TemperatureSensor* temp_sensor = dynamic_cast<TemperatureSensor*>(sensorToModify);
