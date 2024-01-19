@@ -10,6 +10,7 @@ class SensorContainer{
 private:
     std::vector<AbstractSensor*> sensors;
     bool checkNameExistence(const std::string&) const;
+    std::string stringToLower(std::string) const;
 public:
     std::vector<AbstractSensor*> getSensorsList() const;
     AbstractSensor* getSensor(const std::string&) const;

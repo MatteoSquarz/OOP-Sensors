@@ -4,6 +4,7 @@
 #include "LuminositySensor.h"
 #include <iostream>
 #include <vector>
+#include <cstring>
 #include <algorithm>
 namespace Sensor{
 std::vector<AbstractSensor*> SensorContainer::getSensorsList() const{ return sensors;}
@@ -94,11 +95,18 @@ void SensorContainer::modifySensorFromRawData(AbstractSensor* sensorToModify, co
 
 }
 
+std::string SensorContainer::stringToLower(std::string s) const{
+    for (char &c : s) { 
+        c = std::tolower(c); 
+    } 
+    return s;
+}
 
 std::vector<AbstractSensor*> SensorContainer::searchList(const std::string& target) const {
     std::vector<AbstractSensor*> sensorSearchList;
-    for(std::vector<AbstractSensor*>::const_iterator cit = sensors.begin(); cit != sensors.end(); ++cit){  
-        if(((*cit)->getName()).find(target) != std::string::npos)    //cerca substring
+    for(std::vector<AbstractSensor*>::const_iterator cit = sensors.begin(); cit != sensors.end(); ++cit){
+        std::string sensorNameToLower = stringToLower((*cit)->getName());
+        if((sensorNameToLower).find(stringToLower(target)) != std::string::npos)    //cerca substring
             sensorSearchList.push_back(*cit);
     }
     return sensorSearchList;
