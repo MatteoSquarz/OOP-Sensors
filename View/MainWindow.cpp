@@ -2,6 +2,7 @@
 #include "../Json/JsonFile.h"
 #include "ApplicationPanel.h"
 #include <QApplication>
+#include <QStatusBar>
 #include <QFileDialog>
 #include <QToolBar>
 #include <iostream>
@@ -34,6 +35,7 @@ void MainWindow::open(void){
         sensorList.clearAllItems();
         std::vector<AbstractSensor*> items = file.open();
         sensorList.load(items);
+        //statusBar()->showMessage("Aperto da " + path);
     }
     application->refresh();
 }
@@ -44,6 +46,7 @@ void MainWindow::save(void){
     else{
         Json::JsonFile file(path.toStdString());
         file.save(sensorList.getSensorsList());
+        //statusBar()->showMessage("Salvato");
     }
 }
 

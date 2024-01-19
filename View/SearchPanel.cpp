@@ -2,6 +2,7 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QListWidgetItem>
@@ -11,6 +12,9 @@ namespace View {
 
 SearchPanel::SearchPanel(SensorContainer& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
     QVBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* search_label = new QLabel();
+    search_label->setText("Cerca per nome:");
+    layout->addWidget(search_label);
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
     search_text_box = new QLineEdit();
