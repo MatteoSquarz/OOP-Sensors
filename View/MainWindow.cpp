@@ -17,11 +17,15 @@ MainWindow::MainWindow(SensorContainer& sensorList) : sensorList(sensorList){
     QAction* save = new QAction(QIcon(QPixmap(("assets/diskette.png"))), "Salva");
     toolBar->addSeparator();
     toolBar->addAction(save);
+    QAction* close = new QAction(QIcon(QPixmap(("assets/close.png"))), "Chiudi");
+    toolBar->addSeparator();
+    toolBar->addAction(close);
     toolBar->setFixedHeight(30);
     toolBar->setMovable(false);
     this->addToolBar(toolBar);
     connect(open, &QAction::triggered, this, &MainWindow::open);
     connect(save, &QAction::triggered, this, &MainWindow::save);
+    connect(close, &QAction::triggered, this, &MainWindow::closeApp);
     application = new ApplicationPanel(sensorList);
     setCentralWidget(application);
 }
@@ -48,6 +52,11 @@ void MainWindow::save(void){
         file.save(sensorList.getSensorsList());
         //statusBar()->showMessage("Salvato");
     }
+}
+
+void MainWindow::closeApp(void){
+    sensorList.clearAllItems();
+    this->close();
 }
 
 }

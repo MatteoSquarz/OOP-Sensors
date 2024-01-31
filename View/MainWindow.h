@@ -19,6 +19,7 @@ public:
 public slots:
     void open(void);
     void save(void);
+    void closeApp(void);
 };
 
 }
