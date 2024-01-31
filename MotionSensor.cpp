@@ -14,6 +14,7 @@ MotionSensor::MotionSensor(const std::string name, const std::string brand, cons
 
 unsigned int MotionSensor::getSensibility() const{ return sensibility;}
 unsigned int MotionSensor::getDetectionRange() const{ return detectionRange;}
+const std::vector<int>& MotionSensor::getHistory() const{ return history;}
 
 MotionSensor::MotionSensor(){
     sensibility = 0;

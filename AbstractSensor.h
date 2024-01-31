@@ -16,7 +16,6 @@ private:
     bool smartApp;
     bool indoor;
 protected:
-    std::vector<int> history;
     std::vector<SensorObserverInterface*> observers;
 public:
     AbstractSensor(const std::string, const std::string, const std::string, const bool, const bool);
@@ -24,7 +23,6 @@ public:
     const std::string& getName() const;
     const std::string& getBrand() const;
     const std::string& getID() const;
-    const std::vector<int>& getHistory() const;
     bool isSmart() const;
     bool isIndoor() const;
 

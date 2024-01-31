@@ -17,6 +17,8 @@ TemperatureSensor::TemperatureSensor(const std::string name, const std::string b
 
 TemperatureSensor::TemperatureSensor(){}
 
+const std::vector<int>& TemperatureSensor::getHistory() const{ return history;}
+
 void TemperatureSensor::generateRandomHistory(){
 	history.clear();
 	srand((unsigned) time(NULL));
