@@ -9,7 +9,6 @@ AbstractSensor::AbstractSensor(const std::string name, const std::string brand, 
 const std::string& AbstractSensor::getName() const{return name;}
 const std::string& AbstractSensor::getBrand() const{ return brand;}
 const std::string& AbstractSensor::getID() const{ return ID;}
-const std::vector<int>& AbstractSensor::getHistory() const{ return history;}
 bool AbstractSensor::isSmart() const{ return smartApp;}
 bool AbstractSensor::isIndoor() const{ return indoor;}
 

@@ -5,6 +5,7 @@
 #include "MotionSensor.h"
 #include "TemperatureSensor.h"
 #include "View/MainWindow.h"
+#include "SensorContainer.h"
 #include <vector>
 using namespace std;
 
@@ -27,9 +28,11 @@ int main(int argc, char *argv[]) {
     lista.push_back(prova2);
     lista.push_back(prova3);
     */
-    std::vector<Sensor::AbstractSensor*> lista;
+    //std::vector<Sensor::AbstractSensor*> lista;
+    Sensor::SensorContainer lista;
     Sensor::View::MainWindow finestra(lista);
     finestra.resize(1024, 512);
     finestra.show();
     return app.exec();
+    //branch container
 }

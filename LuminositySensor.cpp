@@ -29,6 +29,7 @@ LuminositySensor::LuminositySensor(){}
 
 int LuminositySensor::getMinLuminosity() const{ return min_Luminosity;}
 int LuminositySensor::getMaxLuminosity() const{ return max_Luminosity;}
+const std::vector<int>& LuminositySensor::getHistory() const{ return history;}
 
 void LuminositySensor::generateRandomHistory(){
 	history.clear();

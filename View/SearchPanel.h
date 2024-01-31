@@ -4,18 +4,18 @@
 #include <QListWidget>
 #include <QLineEdit>
 #include "../AbstractSensor.h"
-
+#include "../SensorContainer.h"
 namespace Sensor{
 namespace View {
 
 class SearchPanel : public QWidget{
 Q_OBJECT
 private:
-    std::vector<AbstractSensor*>& sensorList;
+    SensorContainer& sensorList;
     QListWidget* listWidget;
     QLineEdit* search_text_box;
 public:
-    SearchPanel(std::vector<AbstractSensor*>&, QWidget* =0);
+    SearchPanel(SensorContainer&, QWidget* =0);
     void refreshSearch(const std::vector<AbstractSensor*>);
     void refresh();
     std::string returnSearchTextBox() const;

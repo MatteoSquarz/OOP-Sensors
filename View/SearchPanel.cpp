@@ -2,6 +2,7 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QListWidgetItem>
@@ -9,8 +10,11 @@
 namespace Sensor {
 namespace View {
 
-SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
+SearchPanel::SearchPanel(SensorContainer& sensorList, QWidget* parent): QWidget(parent), sensorList(sensorList){
     QVBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* search_label = new QLabel();
+    search_label->setText("Cerca per nome:");
+    layout->addWidget(search_label);
     QGridLayout* commands = new QGridLayout();
     layout->addLayout(commands);
     search_text_box = new QLineEdit();
@@ -28,9 +32,10 @@ SearchPanel::SearchPanel(std::vector<AbstractSensor*>& sensorList, QWidget* pare
     connect(azzera_search, &QPushButton::pressed, this, &SearchPanel::clearSearch);
     commands->addWidget(azzera_search, 1, 1);
     listWidget = new QListWidget(this);
-    for(unsigned int i = 0; i < sensorList.size(); ++i){
+    std::vector<AbstractSensor*> sensors = sensorList.getSensorsList();
+    for(unsigned int i = 0; i < sensors.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;
-        newItem->setText(QString::fromStdString(sensorList[i]->getName()));
+        newItem->setText(QString::fromStdString(sensors[i]->getName()));
         listWidget->insertItem(i, newItem);
     }
     layout->addWidget(listWidget);
@@ -54,9 +59,10 @@ void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchL
 
 void SearchPanel::refresh(){
     listWidget->clear();
-    for(unsigned int i = 0; i < sensorList.size(); ++i){
+    std::vector<AbstractSensor*> sensors = sensorList.getSensorsList();
+    for(unsigned int i = 0; i < sensors.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;
-        newItem->setText(QString::fromStdString(sensorList[i]->getName()));
+        newItem->setText(QString::fromStdString(sensors[i]->getName()));
         listWidget->insertItem(i, newItem);
     }
     search_text_box->setText("");
