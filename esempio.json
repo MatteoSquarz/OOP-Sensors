@@ -1,0 +1,162 @@
+[
+    {
+        "brand": "SensoryHub",
+        "id": "4325235",
+        "isIndoor": true,
+        "isSmart": false,
+        "maxTemperature": 40,
+        "minTemperature": -10,
+        "name": "temp-1",
+        "type": "temperature"
+    },
+    {
+        "brand": "SensiSense",
+        "id": "653624",
+        "isIndoor": false,
+        "isSmart": true,
+        "maxTemperature": 100,
+        "minTemperature": 0,
+        "name": "Temp-2",
+        "type": "temperature"
+    },
+    {
+        "brand": "SensorPro",
+        "id": "34566211",
+        "isIndoor": false,
+        "isSmart": false,
+        "maxLuminosity": 2000,
+        "minLuminosity": 0,
+        "name": "lum1",
+        "type": "luminosity"
+    },
+    {
+        "brand": "SenseConnect",
+        "id": "3673562",
+        "isIndoor": true,
+        "isSmart": false,
+        "maxLuminosity": 1000,
+        "minLuminosity": 20,
+        "name": "Lum2",
+        "type": "luminosity"
+    },
+    {
+        "brand": "Sensorify",
+        "detectionRange": 15,
+        "id": "824275",
+        "isIndoor": false,
+        "isSmart": true,
+        "name": "mov-1",
+        "sensibility": 2,
+        "type": "motion"
+    },
+    {
+        "brand": "SensiSense",
+        "detectionRange": 20,
+        "id": "3152646",
+        "isIndoor": true,
+        "isSmart": true,
+        "name": "mov2",
+        "sensibility": 7,
+        "type": "motion"
+    },
+    {
+        "brand": "SensioTech",
+        "detectionRange": 3,
+        "id": "8549285",
+        "isIndoor": true,
+        "isSmart": false,
+        "name": "Mov3",
+        "sensibility": 4,
+        "type": "motion"
+    },
+    {
+        "brand": "SensorPro",
+        "id": "23525",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxTemperature": 40,
+        "minTemperature": -40,
+        "name": "sensTemp",
+        "type": "temperature"
+    },
+    {
+        "brand": "SenseSolutions",
+        "id": "62625442",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxLuminosity": 3000,
+        "minLuminosity": 1,
+        "name": "sensLum",
+        "type": "luminosity"
+    },
+    {
+        "brand": "SensoryHub",
+        "detectionRange": 25,
+        "id": "2375892",
+        "isIndoor": true,
+        "isSmart": true,
+        "name": "sensMov",
+        "sensibility": 1,
+        "type": "motion"
+    },
+    {
+        "brand": "SensorTech",
+        "id": "2375892",
+        "isIndoor": true,
+        "isSmart": false,
+        "maxTemperature": 60,
+        "minTemperature": -30,
+        "name": "Climate",
+        "type": "temperature"
+    },
+    {
+        "brand": "Sensolink",
+        "id": "256437",
+        "isIndoor": false,
+        "isSmart": false,
+        "maxLuminosity": 2500,
+        "minLuminosity": 10,
+        "name": "brightness",
+        "type": "luminosity"
+    },
+    {
+        "brand": "SensorWave",
+        "detectionRange": 12,
+        "id": "235789",
+        "isIndoor": false,
+        "isSmart": true,
+        "name": "Motion",
+        "sensibility": 5,
+        "type": "motion"
+    },
+    {
+        "brand": "SensorGenius",
+        "id": "652356",
+        "isIndoor": true,
+        "isSmart": true,
+        "maxTemperature": 40,
+        "minTemperature": 0,
+        "name": "thermometer",
+        "type": "temperature"
+    },
+    {
+        "brand": "SensorySolutions",
+        "id": "25262324",
+        "isIndoor": false,
+        "isSmart": true,
+        "maxLuminosity": 1500,
+        "minLuminosity": 0,
+        "name": "Light",
+        "type": "luminosity"
+    },
+    {
+        "brand": "SensorConnect",
+        "detectionRange": 10,
+        "id": "2352654",
+        "isIndoor": true,
+        "isSmart": false,
+        "name": "detection",
+        "sensibility": 6,
+        "type": "motion"
+    }
+]

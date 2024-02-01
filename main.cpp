@@ -1,9 +1,6 @@
 #include <QApplication>
 #include <iostream>
-#include "LuminositySensor.h"
 #include "AbstractSensor.h"
-#include "MotionSensor.h"
-#include "TemperatureSensor.h"
 #include "View/MainWindow.h"
 #include "SensorContainer.h"
 #include <vector>

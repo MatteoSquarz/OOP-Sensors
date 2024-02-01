@@ -23,6 +23,9 @@ MainWindow::MainWindow(SensorContainer& sensorList) : sensorList(sensorList){
     toolBar->setFixedHeight(30);
     toolBar->setMovable(false);
     this->addToolBar(toolBar);
+    save->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
+    open->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_O));
+    close->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
     connect(open, &QAction::triggered, this, &MainWindow::open);
     connect(save, &QAction::triggered, this, &MainWindow::save);
     connect(close, &QAction::triggered, this, &MainWindow::closeApp);
@@ -39,7 +42,6 @@ void MainWindow::open(void){
         sensorList.clearAllItems();
         std::vector<AbstractSensor*> items = file.open();
         sensorList.load(items);
-        //statusBar()->showMessage("Aperto da " + path);
     }
     application->refresh();
 }
@@ -50,7 +52,6 @@ void MainWindow::save(void){
     else{
         Json::JsonFile file(path.toStdString());
         file.save(sensorList.getSensorsList());
-        //statusBar()->showMessage("Salvato");
     }
 }
 
