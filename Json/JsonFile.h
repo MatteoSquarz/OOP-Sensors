@@ -14,8 +14,8 @@ private:
 
 public:
     JsonFile(const std::string&);
-    void save(const std::vector<AbstractSensor*>);
-    std::vector<AbstractSensor*> open(void);
+    void save(const std::vector<AbstractSensor*>) const;
+    std::vector<AbstractSensor*> open(void) const;
 };
 
 }

@@ -6,7 +6,7 @@
 namespace Sensor{
 namespace Json{
 
-AbstractSensor* Reader::read(QJsonObject object){
+AbstractSensor* Reader::read(QJsonObject object) const{
     QJsonValue type = object.value("type");
     AbstractSensor* sensor = nullptr;
     if(type.toString().toStdString() == "temperature"){
@@ -22,7 +22,7 @@ AbstractSensor* Reader::read(QJsonObject object){
     
 }
 
-AbstractSensor* Reader::readLuminositySensor(QJsonObject object){
+AbstractSensor* Reader::readLuminositySensor(QJsonObject object) const{
     return new LuminositySensor(object.value("name").toString().toStdString(),
                                 object.value("brand").toString().toStdString(),
                                 object.value("id").toString().toStdString(),
@@ -32,7 +32,7 @@ AbstractSensor* Reader::readLuminositySensor(QJsonObject object){
                                 object.value("maxLuminosity").toInt());
 }
 
-AbstractSensor* Reader::readMotionSensor(QJsonObject object){
+AbstractSensor* Reader::readMotionSensor(QJsonObject object) const{
     return new MotionSensor(object.value("name").toString().toStdString(),
                                 object.value("brand").toString().toStdString(),
                                 object.value("id").toString().toStdString(),
@@ -42,7 +42,7 @@ AbstractSensor* Reader::readMotionSensor(QJsonObject object){
                                 object.value("detectionRange").toInt());
 }
 
-AbstractSensor* Reader::readTemperatureSensor(QJsonObject object){
+AbstractSensor* Reader::readTemperatureSensor(QJsonObject object) const{
     return new TemperatureSensor(object.value("name").toString().toStdString(),
                                 object.value("brand").toString().toStdString(),
                                 object.value("id").toString().toStdString(),

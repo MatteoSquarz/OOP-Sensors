@@ -8,11 +8,11 @@ namespace Json{
 
 class Reader{
 private:
-    AbstractSensor* readTemperatureSensor(QJsonObject);
-    AbstractSensor* readMotionSensor(QJsonObject);
-    AbstractSensor* readLuminositySensor(QJsonObject);
+    AbstractSensor* readTemperatureSensor(QJsonObject) const;
+    AbstractSensor* readMotionSensor(QJsonObject) const;
+    AbstractSensor* readLuminositySensor(QJsonObject) const;
 public:
-    AbstractSensor* read(QJsonObject);
+    AbstractSensor* read(QJsonObject) const;
 };
 
 }
