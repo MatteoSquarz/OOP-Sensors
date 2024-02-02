@@ -31,7 +31,7 @@ public:
     void registerObserver(SensorObserverInterface*);
     virtual void generateRandomHistory() =0;
     void modifyData(const std::string, const std::string, const std::string, const bool, const bool);
-    bool operator== (const AbstractSensor& s);
+    bool operator== (const AbstractSensor&);
 };
 }
 

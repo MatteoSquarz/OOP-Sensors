@@ -19,7 +19,7 @@ public:
     std::vector<AbstractSensor*> searchList(const std::string&) const;
     void deleteSensor(AbstractSensor*);
     AbstractSensor* addSensorFromRawData(const std::vector<std::string>&);
-    void modifySensorFromRawData(AbstractSensor*, const std::vector<std::string>&);
+    void modifySensorFromRawData(AbstractSensor*, const std::vector<std::string>&) const;
     void clearAllItems();
     void load(std::vector<AbstractSensor*>&);
 };

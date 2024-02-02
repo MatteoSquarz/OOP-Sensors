@@ -3,7 +3,6 @@
 #include "AbstractSensor.h"
 #include "View/MainWindow.h"
 #include "SensorContainer.h"
-#include <vector>
 using namespace std;
 
 

@@ -37,30 +37,39 @@ AbstractSensor* SensorContainer::addSensorFromRawData(const std::vector<std::str
     data[5] == "Indoor" ? isIndoor = true : isIndoor = false;
     std::string campo_dati_1 = data[6];
     std::string campo_dati_2 = data[7];
+    AbstractSensor* new_sensor = nullptr;
     if(checkNameExistence(name)){    
         throw err_nameAlreadyExists();
     }
-    AbstractSensor* new_sensor = nullptr;
     if(tipo_sensore == "Temperatura"){
         int min_Temperature = stoi(campo_dati_1);
         int max_Temperature = stoi(campo_dati_2);
-        new_sensor = new TemperatureSensor(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
+        if(min_Temperature >= max_Temperature) throw err_maxminTemp();
+        else
+            new_sensor = new TemperatureSensor(name, brand, id, isSmart, isIndoor, min_Temperature, max_Temperature);
+        
     }
     else if(tipo_sensore == "Movimento"){
         int sensibility = stoi(campo_dati_1);
         int detection_range = stoi(campo_dati_2);
-        new_sensor = new MotionSensor(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
+        if(sensibility < 0 || detection_range < 0) throw err_negativeValue();
+        else
+            new_sensor = new MotionSensor(name, brand, id, isSmart, isIndoor, sensibility, detection_range);
     }
     else if(tipo_sensore == "Luminosità"){
         int min_Luminosity = stoi(campo_dati_1);
         int max_Luminosity = stoi(campo_dati_2);
-        new_sensor = new LuminositySensor(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
+        if(min_Luminosity >= max_Luminosity) throw err_maxminLum();
+        else if(min_Luminosity < 0) throw err_minUnderZero();
+        else
+            new_sensor = new LuminositySensor(name, brand, id, isSmart, isIndoor, min_Luminosity, max_Luminosity);
     }
-    sensors.push_back(new_sensor);
+    if(new_sensor != nullptr)
+        sensors.push_back(new_sensor);
     return new_sensor;
 }
 
-void SensorContainer::modifySensorFromRawData(AbstractSensor* sensorToModify, const std::vector<std::string>& data){
+void SensorContainer::modifySensorFromRawData(AbstractSensor* sensorToModify, const std::vector<std::string>& data) const{
     std::string name = data[0];
     std::string id = data[1];
     std::string brand = data[2];
@@ -106,7 +115,7 @@ std::vector<AbstractSensor*> SensorContainer::searchList(const std::string& targ
     std::vector<AbstractSensor*> sensorSearchList;
     for(std::vector<AbstractSensor*>::const_iterator cit = sensors.begin(); cit != sensors.end(); ++cit){
         std::string sensorNameToLower = stringToLower((*cit)->getName());
-        if((sensorNameToLower).find(stringToLower(target)) != std::string::npos)    //cerca substring
+        if((sensorNameToLower).find(stringToLower(target)) != std::string::npos)    //cerca substring ad esempio "te" trova "temp" + case-insensitive
             sensorSearchList.push_back(*cit);
     }
     return sensorSearchList;
@@ -114,7 +123,7 @@ std::vector<AbstractSensor*> SensorContainer::searchList(const std::string& targ
 
 void SensorContainer::clearAllItems(){
     for(auto sensorToDelete : sensors){
-            delete sensorToDelete;
+        delete sensorToDelete;
     }
     sensors.clear();
 }
