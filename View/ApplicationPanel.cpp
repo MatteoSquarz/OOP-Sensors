@@ -19,7 +19,7 @@ ApplicationPanel::ApplicationPanel(SensorContainer& sensorList, QWidget* parent)
     searchPanel = new SearchPanel(sensorList);
     layout->addWidget(searchPanel);
     searchPanel->setFixedWidth(200);
-    MotionSensor esempio = MotionSensor();
+    MotionSensor esempio = MotionSensor();   //sensore di esempio quando non ci sono sensori nella lista da poter visualizzare
     sensorPanel = new SensorPanel(&esempio);
     layout->addWidget(sensorPanel); 
     connect(searchPanel, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(changeSensor(QListWidgetItem*)));
