@@ -50,7 +50,7 @@ void SensorChartVisitor::visitMotionSensor(MotionSensor& motion_sensor) {
     QStringList categories;
     QBarSet* set = new QBarSet("movimenti");
     for(unsigned int i = 0; i < 24; ++i){
-        std::string orario = std::to_string(i) + "-" + std::to_string(i+1);
+        std::string orario = std::to_string(i);
         categories << QString::fromStdString(orario);
     }
     for(unsigned int i = 0; i < values.size(); ++i){
