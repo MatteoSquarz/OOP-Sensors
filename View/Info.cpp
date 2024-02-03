@@ -39,7 +39,7 @@ Info::Info(AbstractSensor* sensor, QWidget* parent): QWidget(parent), sensor(sen
     sensor->registerObserver(this);
 }
 
-void Info::show(AbstractSensor* s) {
+void Info::show(AbstractSensor* s) { //quando si passa da un sensore ad un altro
     s->registerObserver(this);
     
     name_label->setText("Nome: " + QString::fromStdString(s->getName()));
@@ -61,7 +61,7 @@ void Info::show(AbstractSensor* s) {
     
 }
 
-void Info::notify(AbstractSensor* sensor) {
+void Info::notify(AbstractSensor* sensor) {  //quando si modificano i dati di un sensore
     name_label->setText("Nome: " + QString::fromStdString(sensor->getName()));
     id_label->setText("ID: " + QString::fromStdString(sensor->getID()));
     brand_label->setText("Brand: " + QString::fromStdString(sensor->getBrand()));

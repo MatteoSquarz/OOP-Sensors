@@ -25,13 +25,13 @@ ChartPanel::ChartPanel(Sensor::AbstractSensor* sensor, QWidget* parent): QWidget
 }
 
 
-void ChartPanel::notify(AbstractSensor* sensor) {
+void ChartPanel::notify(AbstractSensor* sensor) {   //quando viene generata una nuova simulazione sul sensore visualizzato
     SensorChartVisitor visitor; 
     sensor->accept(visitor);
     QChartView* chartViewRitornato = visitor.getChartView();
     chartView->setChart(chartViewRitornato->chart());
 }
-void ChartPanel::refresh(AbstractSensor* sensor) {
+void ChartPanel::refresh(AbstractSensor* sensor) {  //quando si passa da un sensore ad un altro
     sensor->registerObserver(this);
     SensorChartVisitor visitor; 
     sensor->accept(visitor);

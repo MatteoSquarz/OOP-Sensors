@@ -34,18 +34,16 @@ ApplicationPanel::ApplicationPanel(SensorContainer& sensorList, QWidget* parent)
 void ApplicationPanel::changeSensor(QListWidgetItem* item){
     std::string sensorName = (item->text()).toStdString();
     sensorPanel->refresh(sensorList.getSensor(sensorName));
-
 }
 
 void ApplicationPanel::searchList(){
     std::string search_target = searchPanel->returnSearchTextBox();
     std::vector<AbstractSensor*> sensorSearchList = sensorList.searchList(search_target);
-    searchPanel->refreshSearch(sensorSearchList);
-    
+    searchPanel->refreshSearch(sensorSearchList);    //fa vedere la lista di risultati trovati
 }
 
 void ApplicationPanel::clearSearchList(){
-    searchPanel->refresh();
+    searchPanel->refresh();  //rimette la lista intera
 }
 
 void ApplicationPanel::deleteSensorFromList(){
@@ -68,7 +66,6 @@ void ApplicationPanel::addSensorWindow(){
 }
 
 void ApplicationPanel::addSensorToList(std::vector<std::string> data){
-    
     AbstractSensor* new_sensor = nullptr;
     QMessageBox messageBox;
     messageBox.setFixedSize(500,200);
@@ -111,7 +108,6 @@ void ApplicationPanel::modifySensorInList(std::vector<std::string> data){
     AbstractSensor* sensorToModify = sensorPanel->getCurrentSensor();
     QMessageBox messageBox;
     messageBox.setFixedSize(500,200);
-    
     try{
         sensorList.modifySensorFromRawData(sensorToModify, data);
         searchPanel->refresh();

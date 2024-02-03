@@ -48,7 +48,7 @@ SearchPanel::SearchPanel(SensorContainer& sensorList, QWidget* parent): QWidget(
 }
 
 
-void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchList){
+void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchList){   //fa vedere a solo i risultati trovati
     listWidget->clear();
     for(unsigned int i = 0; i < sensorSearchList.size(); ++i){
         QListWidgetItem* newItem = new QListWidgetItem;
@@ -57,7 +57,7 @@ void SearchPanel::refreshSearch(const std::vector<AbstractSensor*> sensorSearchL
     }
 }
 
-void SearchPanel::refresh(){
+void SearchPanel::refresh(){   //rimette l'intera lista
     listWidget->clear();
     std::vector<AbstractSensor*> sensors = sensorList.getSensorsList();
     for(unsigned int i = 0; i < sensors.size(); ++i){
