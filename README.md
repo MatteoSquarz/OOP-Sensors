@@ -19,8 +19,5 @@ Dopo aver installato Qt è possibile spostarsi nella cartella ```codice/``` ed e
 
 ## Utilizzo
 
-<div>
-  <img width="808" height="448" alt="image" src="https://github.com/user-attachments/assets/01585144-e84e-4e7f-b2bb-e1c417ab6898" />
-  <img width="180" height="448" alt="image" src="https://github.com/user-attachments/assets/fd9cb771-7d68-4bb6-beca-6f12db44ec01" />
-</div>
+<img width="808" height="448" alt="image" src="https://github.com/user-attachments/assets/01585144-e84e-4e7f-b2bb-e1c417ab6898" />
 
